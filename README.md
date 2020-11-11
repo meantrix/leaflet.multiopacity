@@ -18,3 +18,5 @@ This package is not yet released on CRAN. Meanwhile, you can install the latest 
 if (!require("remotes")) install.packages("remotes")
 remotes::install_github("meantrix/leaflet.multiopacity@main")
 ```
+
+## Basic Usage

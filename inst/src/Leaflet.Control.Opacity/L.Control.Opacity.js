@@ -140,20 +140,20 @@ L.Control.Opacity = L.Control.extend({
 	_onInputClick: function () {
 		var inputs = this._layerControlInputs,
 			input, layer;
-			
+
 		this._handlingClick = true;
-		
+
 		for (var i = inputs.length - 1; i >= 0; i--) {
 			input = inputs[i];
 			layer = this._getLayer(input.layerId).layer;
-			if( typeof layer._url === 'undefined'){
-			}else{
-				layer.setOpacity(input.value / 100);
-			}
+			//if( typeof layer._url === 'undefined'){ //disable url check
+			//}else{
+			layer.setOpacity(input.value / 100);
+			//}
 		}
 
 		this._handlingClick = false;
-		
+
 		this._refocusOnMap();
 	},
 });

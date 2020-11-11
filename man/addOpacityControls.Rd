@@ -4,27 +4,31 @@
 \alias{addOpacityControls}
 \title{Add Opacity Controls}
 \usage{
-addOpacityControls(map)
+addOpacityControls(
+  map,
+  layerId = NULL,
+  collapsed = FALSE,
+  position = c("topright", "topleft", "bottomright", "bottomleft"),
+  label = NULL
+)
 }
 \arguments{
-\item{map}{Leaflet map.}
+\item{map}{The map to add the opacity controls to.}
+
+\item{layerId}{One or more layer IDs to render opacity controls to. If NULL (the default),
+will create controls for all layers and graphical components.}
+
+\item{collapsed}{If FALSE (the default), the opacity control will always appear
+in its expanded state. Set to TRUE to have the opacity control
+rendered as an icon that expands when hovered over.}
+
+\item{position}{Position of control: "topleft", "topright", "bottomleft", or "bottomright".}
+
+\item{label}{The control title.}
 }
 \description{
 Add Opacity Controls
 }
 \examples{
-# Load libraries
-library(leaflet)
-library(leaflet.multiopacity)
-library(raster)
-
-# Create raster example
-r <- raster(xmn = -2.8, xmx = -2.79, ymn = 54.04, ymx = 54.05, nrows = 30, ncols = 30)
-values(r) <- matrix(1:900, nrow(r), ncol(r), byrow = TRUE)
-crs(r) <- CRS("+init=epsg:4326")
-
-leaflet() \%>\%
-  addTiles() \%>\%
-  addRasterImage(r, layerId = "raster")
 
 }
