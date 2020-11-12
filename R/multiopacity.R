@@ -15,24 +15,24 @@
 #' The control title.
 #'
 #' @examples
-# # Load libraries
-# library(leaflet)
-# library(leaflet.multiopacity)
-# library(raster)
-#
-# # Create raster example
-# r <- raster(xmn = -2.8, xmx = -2.79,
-#             ymn = 54.04, ymx = 54.05,
-#             nrows = 30, ncols = 30)
-# values(r) <- matrix(1:900, nrow(r), ncol(r), byrow = TRUE)
-# crs(r) <- CRS("+init=epsg:4326")
-#
-# # If layerId not specified, will show controls all layers
-# leaflet() %>%
-#   addProviderTiles("Wikimedia", layerId = "Wikimedia") %>%
-#   addRasterImage(r, layerId = "raster") %>%
-#   addAwesomeMarkers(lng = -2.79545, lat = 54.04321, layerId = "hospital", label = "Hospital") %>%
-#   addOpacityControls(collapsed = FALSE, position = "topright", label = "Opacity Control")
+#' # Load libraries
+#' library(leaflet)
+#' library(leaflet.multiopacity)
+#' library(raster)
+#'
+#' # Create raster example
+#' r <- raster(xmn = -2.8, xmx = -2.79,
+#'             ymn = 54.04, ymx = 54.05,
+#'             nrows = 30, ncols = 30)
+#' values(r) <- matrix(1:900, nrow(r), ncol(r), byrow = TRUE)
+#' crs(r) <- CRS("+init=epsg:4326")
+#'
+#' # If layerId not specified, will show controls all layers
+#' leaflet() %>%
+#'   addProviderTiles("Wikimedia", layerId = "Wikimedia") %>%
+#'   addRasterImage(r, layerId = "raster") %>%
+#'   addAwesomeMarkers(lng = -2.79545, lat = 54.04321, layerId = "hospital", label = "Hospital") %>%
+#'   addOpacityControls(layerId = c("raster", "hospital"), collapsed = FALSE, position = "topright", label = "Opacity Control")
 #'
 #' @export
 addOpacityControls <- function(map, layerId = NULL,
@@ -74,12 +74,13 @@ addOpacityControls <- function(map, layerId = NULL,
 
         var map = this;
 
-        debugger;
+        //debugger;
 
         if (data.layerIds == null) {
         var layers = removePrefix(map.layerManager._byLayerId);
         } else {
-        var layers = null;
+        var allLayers = getAllLayers(map.layerManager._byStamp);
+        var layers = subsetByLayerId(allLayers, data.layerIds);
         };
 
         //OpacityControl

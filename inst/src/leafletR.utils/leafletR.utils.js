@@ -21,6 +21,14 @@ function removePrefix(ObjectLayers) {
   return(clonedObj);
 }
 
+function asArray(value) {
+  if (value === null)
+    return [];
+  if ($.isArray(value))
+    return value;
+  return [value];
+}
+
 // Get all layers from map.layerManager._byStamp
 function getAllLayers(ObjectByStamp) {
   const clonedObj = clone(ObjectByStamp);
