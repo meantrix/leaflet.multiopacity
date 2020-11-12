@@ -85,6 +85,7 @@ addOpacityControls <- function(map, layerId = NULL,
         //OpacityControl
         L.control.opacity(
           layers,
+          //map.layerManager._byStamp,
           options = {
             collapsed: data.options.collapsed,
             position: data.options.position,
@@ -95,3 +96,16 @@ addOpacityControls <- function(map, layerId = NULL,
         }'), data)
 
 }
+
+
+
+
+# Subsetting by group or category (type)
+# map.layerManager._byGroup.hospital
+# map.layerManager._byCategory.image
+# by type (another solution)
+# map.layerManager._byLayer
+# subset keynames (tile, image, marker)
+
+
+
