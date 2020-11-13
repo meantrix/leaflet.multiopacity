@@ -1,3 +1,7 @@
+#' Return JavaScript dependencies
+#'
+#' @return List with JavaScript dependencies of the package.
+#' @export
 dependencies <- function() {
   Leaflet.Control.Opacity <- htmltools::htmlDependency(
     name = "Leaflet.Control.Opacity",
@@ -17,6 +21,21 @@ dependencies <- function() {
   return(list(Leaflet.Control.Opacity, leafletR.utils))
 }
 
+#' Register Plugin to leaflet map
+#'
+#' @param map
+#' The map to register the plugin.
+#' @param plugin
+#' List with JavaScript dependencies (`from htmltools::htmlDependency`)
+#' to register.
+#'
+#' @return
+#' Leaflet map with plugin registered (JS dependencies added).
+#' @export
+#'
+#' @examples
+#' leaflet() %>%
+#'   leaflet.multiopacity::registerPlugin(dependencies())
 registerPlugin <- function(map, plugin) {
   map$dependencies <- c(map$dependencies, plugin)
   return(map)

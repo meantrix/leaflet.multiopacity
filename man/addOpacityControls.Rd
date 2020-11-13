@@ -9,7 +9,7 @@ addOpacityControls(
   layerId = NULL,
   collapsed = FALSE,
   position = c("topright", "topleft", "bottomright", "bottomleft"),
-  label = NULL
+  title = NULL
 )
 }
 \arguments{
@@ -24,7 +24,7 @@ rendered as an icon that expands when hovered over.}
 
 \item{position}{Position of control: "topleft", "topright", "bottomleft", or "bottomright".}
 
-\item{label}{The control title.}
+\item{title}{The control title.}
 }
 \description{
 Add Opacity Controls

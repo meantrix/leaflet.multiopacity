@@ -11,7 +11,7 @@
 #' rendered as an icon that expands when hovered over.
 #' @param position
 #' Position of control: "topleft", "topright", "bottomleft", or "bottomright".
-#' @param label
+#' @param title
 #' The control title.
 #'
 #' @examples
@@ -43,27 +43,27 @@ addOpacityControls <- function(map, layerId = NULL,
                                  "bottomright",
                                  "bottomleft"
                                ),
-                               label = NULL) {
+                               title = NULL) {
 
 
   if (!is.null(layerId)) stopifnot(inherits(layerId, "character"))
   position <- match.arg(position)
   stopifnot(inherits(collapsed, "logical"),
             length(collapsed) == 1)
-  if (!is.null(label))
-    stopifnot(inherits(label, "character"),
-              length(label) == 1)
+  if (!is.null(title))
+    stopifnot(inherits(title, "character"),
+              length(title) == 1)
 
   if (isTRUE(collapsed)) {
-    warning("Not possible to set control label when collapsed is TRUE.")
-    label <- NULL
+    warning("Not possible to set control title when collapsed is TRUE.")
+    title <- NULL
   }
 
   data <- list(layerIds = layerId,
                options = list(
                  collapsed = collapsed,
                  position = position,
-                 label = label
+                 label = title
                ))
 
   map %>%
@@ -73,8 +73,6 @@ addOpacityControls <- function(map, layerId = NULL,
         'function(el, x, data) {
 
         var map = this;
-
-        //debugger;
 
         if (data.layerIds == null) {
         var layers = removePrefix(map.layerManager._byLayerId);
@@ -86,7 +84,6 @@ addOpacityControls <- function(map, layerId = NULL,
         //OpacityControl
         L.control.opacity(
           layers,
-          //map.layerManager._byStamp,
           options = {
             collapsed: data.options.collapsed,
             position: data.options.position,
@@ -98,6 +95,108 @@ addOpacityControls <- function(map, layerId = NULL,
 
 }
 
+
+#' Add Dynamic Opacity Controls
+#'
+#' @param map
+#' The map to add the opacity controls to.
+#' @param type
+#' @param category
+#' One or more categories to render opacity controls to.
+#' @param group
+#' One or more groups to render opacity controls to.
+#' @param layerId
+#' One or more layer IDs to render opacity controls to.
+#' @param collapsed
+#' If FALSE (the default), the opacity control will always appear
+#' in its expanded state. Set to TRUE to have the opacity control
+#' rendered as an icon that expands when hovered over.
+#' @param position
+#' Position of control: "topleft", "topright", "bottomleft", or "bottomright".
+#' @param title
+#' The control title.
+#'
+#' @return
+#' @export
+#'
+#' @examples
+addDynamicOpacityControls <- function(map,
+                                      type = c("category", "group", "layerId"),
+                                      category = NULL,
+                                      group = NULL,
+                                      layerId = NULL,
+                                      collapsed = FALSE,
+                                      position = c(
+                                        "topright",
+                                        "topleft",
+                                        "bottomright",
+                                        "bottomleft"
+                                      ),
+                                      title = NULL) {
+
+
+  type <- match.arg(type)
+  if (!is.null(layerId)) stopifnot(inherits(layerId, "character"))
+  position <- match.arg(position)
+  stopifnot(inherits(collapsed, "logical"),
+            length(collapsed) == 1)
+  if (!is.null(title))
+    stopifnot(inherits(title, "character"),
+              length(title) == 1)
+
+  if (isTRUE(collapsed)) {
+    warning("Not possible to set control title when collapsed is TRUE.")
+    title <- NULL
+  }
+
+  data <- list(category = category,
+               group = group,
+               layerId = layerId,
+               options = list(
+                 collapsed = collapsed,
+                 position = position,
+                 label = title
+               ))
+
+  # Add option to map
+  multiopacity <- list(
+    type = type
+  )
+  map$x$options <- c(map$x$options,
+                    multiopacity = list(multiopacity))
+
+  map %>%
+    registerPlugin(dependencies()) %>%
+    htmlwidgets::onRender(
+      htmlwidgets::JS('
+      function(el, x, data) {
+        var multiopacityControl;
+        var map = this;
+
+        if (map.options.multiopacity.type == "category") {
+          map.on("layeradd",
+            function(e) {
+              // remove previous multiopacityControl if it exists
+              if (multiopacityControl !== undefined) {
+                multiopacityControl.remove()
+              }
+              var allLayers = getAllLayers(map.layerManager._byStamp);
+              var layers = subsetByCategory(allLayers, data.category);
+              //OpacityControl
+              multiopacityControl = L.control.opacity(
+                layers,
+                options = {
+                  collapsed: data.options.collapsed,
+                  position: data.options.position,
+                  label: data.options.label
+                }
+              ).addTo(map);
+            }
+          );
+        }
+        }'), data)
+
+}
 
 
 
