@@ -66,11 +66,12 @@ addOpacityControls <- function(map, layerId = NULL,
                  label = title
                ))
 
-  map %>%
-    registerPlugin(dependencies()) %>%
-    htmlwidgets::onRender(
-      htmlwidgets::JS(
-        'function(el, x, data) {
+  map <- registerPlugin(map, dependencies())
+
+  htmlwidgets::onRender(
+    map,
+    htmlwidgets::JS(
+      'function(el, x, data) {
 
         var map = this;
 
@@ -158,17 +159,19 @@ addDynamicOpacityControls <- function(map,
                  label = title
                ))
 
-  # Add option to map
+  # Add options to map
   multiopacity <- list(
     type = type
   )
+
   map$x$options <- c(map$x$options,
                     multiopacity = list(multiopacity))
 
-  map %>%
-    registerPlugin(dependencies()) %>%
-    htmlwidgets::onRender(
-      htmlwidgets::JS('
+  map <- registerPlugin(map, dependencies())
+
+  htmlwidgets::onRender(
+    map,
+    htmlwidgets::JS('
       function(el, x, data) {
         var multiopacityControl;
         var map = this;
