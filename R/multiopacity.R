@@ -54,7 +54,7 @@ addOpacityControls <- function(map, layerId = NULL,
     stopifnot(inherits(title, "character"),
               length(title) == 1)
 
-  if (isTRUE(collapsed)) {
+  if (isTRUE(collapsed) && !is.null(title)) {
     warning("Not possible to set control title when collapsed is TRUE.")
     title <- NULL
   }
@@ -145,7 +145,7 @@ addDynamicOpacityControls <- function(map,
     stopifnot(inherits(title, "character"),
               length(title) == 1)
 
-  if (isTRUE(collapsed)) {
+  if (isTRUE(collapsed) && !is.null(title)) {
     warning("Not possible to set control title when collapsed is TRUE.")
     title <- NULL
   }

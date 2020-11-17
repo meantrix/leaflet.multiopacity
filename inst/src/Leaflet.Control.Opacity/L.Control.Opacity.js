@@ -117,7 +117,7 @@ L.Control.Opacity = L.Control.extend({
 			input.className = 'leaflet-control-layers-range';
             input.min = 0;
             input.max = 100;
-            input.value = 100;
+            input.value = 100; //get value from layerControl
 		} else {
 			input = this._createRadioElement('leaflet-base-layers', checked);
 		}
