@@ -154,18 +154,19 @@ addDynamicOpacityControls <- function(map,
                group = group,
                layerId = layerId,
                options = list(
+                 type = type,
                  collapsed = collapsed,
                  position = position,
                  label = title
                ))
 
-  # Add options to map
-  multiopacity <- list(
-    type = type
-  )
+  # # Add options to map
+  # multiopacity <- list(
+  #   type = type
+  # )
 
-  map$x$options <- c(map$x$options,
-                    multiopacity = list(multiopacity))
+  # map$x$options <- c(map$x$options,
+                    # multiopacity = list(multiopacity))
 
   map <- registerPlugin(map, dependencies())
 
@@ -175,17 +176,27 @@ addDynamicOpacityControls <- function(map,
       function(el, x, data) {
         var multiopacityControl;
         var map = this;
-
-        if (map.options.multiopacity.type == "category") {
-          map.on("layeradd",
-            function(e) {
-              // remove previous multiopacityControl if it exists
-              if (multiopacityControl !== undefined) {
-                multiopacityControl.remove()
-              }
-              var allLayers = getAllLayers(map.layerManager._byStamp);
-              var layers = subsetByCategory(allLayers, data.category);
-              //OpacityControl
+        map.on("layeradd",
+          function(e) {
+            // remove previous multiopacityControl if it exists
+            if (multiopacityControl !== undefined) {
+              multiopacityControl.remove()
+            }
+            var allLayers = getAllLayers(map.layerManager._byStamp)
+            switch (data.options.type) {
+              case "category":
+                var layers = subsetByCategory(allLayers, data.category);
+                break;
+              case "group":
+                var layers = subsetByGroup(allLayers, data.group);
+                break;
+              case "layerId":
+                var layers = subsetByLayerId(allLayers, data.layerId);
+                break;
+              default:
+                break;
+            }
+            //OpacityControl
               multiopacityControl = L.control.opacity(
                 layers,
                 options = {
@@ -194,14 +205,34 @@ addDynamicOpacityControls <- function(map,
                   label: data.options.label
                 }
               ).addTo(map);
-            }
-          );
-        }
-        }'), data)
+          }
+        )
+      }'), data)
 
 }
 
-
+# //if (map.options.multiopacity.type == "category") {
+#   if (data.options.type == "category") {
+#     map.on("layeradd",
+#            function(e) {
+#              // remove previous multiopacityControl if it exists
+#              if (multiopacityControl !== undefined) {
+#                multiopacityControl.remove()
+#              }
+#              var allLayers = getAllLayers(map.layerManager._byStamp);
+#              var layers = subsetByCategory(allLayers, data.category);
+#              //OpacityControl
+#              multiopacityControl = L.control.opacity(
+#                layers,
+#                options = {
+#                  collapsed: data.options.collapsed,
+#                  position: data.options.position,
+#                  label: data.options.label
+#                }
+#              ).addTo(map);
+#            }
+#     );
+#   }
 
 # Subsetting by group or category (type)
 # map.layerManager._byGroup.hospital

@@ -5,6 +5,7 @@
 
 const clone = (obj) => Object.assign({}, obj);
 
+/*
 function removePrefix(ObjectLayers) {
   const clonedObj = clone(ObjectLayers);
   var array = Object.values(clonedObj);
@@ -20,11 +21,12 @@ function removePrefix(ObjectLayers) {
   }
   return(clonedObj);
 }
+*/
 
 function asArray(value) {
   if (value === null)
     return [];
-  if ($.isArray(value))
+  if (Array.isArray(value))
     return value;
   return [value];
 }
@@ -32,7 +34,6 @@ function asArray(value) {
 // Get all layers from map.layerManager._byStamp
 function getAllLayers(ObjectByStamp) {
   const clonedObj = clone(ObjectByStamp);
-  //var layerObjs = [];
   var layerObjs = {};
   for (var i = 0; i < Object.keys(clonedObj).length; i++) {
     var layer = Object.values(clonedObj)[i];
@@ -43,7 +44,6 @@ function getAllLayers(ObjectByStamp) {
       _leaflet_id: layer.layer._leaflet_id,
       layer: layer.layer
     };
-    //layerObjs.push({[layer.layerId]: layerObj})
     layerObjs[layer.layerId] = layerObj;
   }
   return(layerObjs);
@@ -51,28 +51,31 @@ function getAllLayers(ObjectByStamp) {
 
 // Detect if text has some of searchWords
 function multiSearchOr(text, searchWords) {
-  var match2 = searchWords.map(el => "\\b" + el + "\\b").some(function(el) {
-    var match = text.match(new RegExp(el,"i"));
-    return(match);
+  match = searchWords.map(el => "\\b" + el + "\\b").some(function(el) {
+    return(text.match(new RegExp(el,"i")));
   });
-  return(match2);
+  return(match);
 }
 
 // Detect if text has all the searchWords
 function multiSearchAnd(text, searchWords) {
-  match2 = searchWords.map(el => "\\b" + el + "\\b").every(function(el) {
-    var match = text.match(new RegExp(el,"i"));
-    return(match);
+  match = searchWords.map(el => "\\b" + el + "\\b").every(function(el) {
+    return(text.match(new RegExp(el,"i")));
   });
-  return(match2);
+  return(match);
 }
 
 // Subset allLayers by layerId(s)
 function subsetByLayerId(allLayers, layerId) {
-  // Filter by layerId
-  var res = Object.values(allLayers).filter(
-    function(p) {return(multiSearchOr(p.layerId, asArray(layerId)))}
-  );
+  var res;
+  if (layerId === null) {
+    res = Object.values(allLayers);
+  } else {
+    // Filter by layerId
+    res = Object.values(allLayers).filter(
+      function(p) {return(multiSearchOr(p.layerId, asArray(layerId)))}
+    );
+  }
   obj = {};
   for (i = 0; i < res.length; i++) {
     obj[res[i].layerId] = res[i].layer;
@@ -82,10 +85,16 @@ function subsetByLayerId(allLayers, layerId) {
 
 // Subset allLayers by group(s)
 function subsetByGroup(allLayers, group) {
-  // Filter by group
-  var res = Object.values(allLayers).filter(
-    function(p) {return(multiSearchOr(p.group, asArray(group)))}
-  );
+  var res;
+  //debugger;
+  if (group === null) {
+    res = Object.values(allLayers);
+  } else {
+    // Filter by group
+    res = Object.values(allLayers).filter(
+      function(p) {return(multiSearchOr(p.group, asArray(group)))}
+    );
+  }
   obj = {};
   for (i = 0; i < res.length; i++) {
     obj[res[i].layerId] = res[i].layer;
@@ -95,10 +104,15 @@ function subsetByGroup(allLayers, group) {
 
 // Subset allLayers by category(ies)
 function subsetByCategory(allLayers, category) {
-  // Filter by category
-  var res = Object.values(allLayers).filter(
-    function(p) {return(multiSearchOr(p.category, asArray(category)))}
-  );
+  var res;
+  if (category === null) {
+    res = Object.values(allLayers);
+  } else {
+    // Filter by category
+    res = Object.values(allLayers).filter(
+      function(p) {return(multiSearchOr(p.category, asArray(category)))}
+    );
+  }
   obj = {};
   for (i = 0; i < res.length; i++) {
     obj[res[i].layerId] = res[i].layer;
