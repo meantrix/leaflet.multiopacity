@@ -3,7 +3,7 @@
 // Meantrix
 // #########################
 
-const clone = (obj) => Object.assign({}, obj);
+//const clone = (obj) => Object.assign({}, obj);
 
 /*
 function removePrefix(ObjectLayers) {
@@ -33,10 +33,10 @@ function asArray(value) {
 
 // Get all layers from map.layerManager._byStamp
 function getAllLayers(ObjectByStamp) {
-  const clonedObj = clone(ObjectByStamp);
+  //const clonedObj = clone(ObjectByStamp);
   var layerObjs = {};
-  for (var i = 0; i < Object.keys(clonedObj).length; i++) {
-    var layer = Object.values(clonedObj)[i];
+  for (var i = 0; i < Object.keys(ObjectByStamp).length; i++) {
+    var layer = Object.values(ObjectByStamp)[i];
     var layerObj = {
       layerId: layer.layerId,
       category: layer.category,
@@ -51,18 +51,20 @@ function getAllLayers(ObjectByStamp) {
 
 // Detect if text has some of searchWords
 function multiSearchOr(text, searchWords) {
+  if (text == null) return false;
   match = searchWords.map(el => "\\b" + el + "\\b").some(function(el) {
     return(text.match(new RegExp(el,"i")));
   });
-  return(match);
+  return match;
 }
 
 // Detect if text has all the searchWords
 function multiSearchAnd(text, searchWords) {
+  if (text == null) return false;
   match = searchWords.map(el => "\\b" + el + "\\b").every(function(el) {
     return(text.match(new RegExp(el,"i")));
   });
-  return(match);
+  return match;
 }
 
 // Subset allLayers by layerId(s)
