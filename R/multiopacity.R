@@ -2,9 +2,14 @@
 #'
 #' @param map
 #' The map to add the opacity controls to.
+#' @param type
+#'
+#' @param category
+#' One or more categories to render opacity controls to.
+#' @param group
+#' One or more groups to render opacity controls to.
 #' @param layerId
-#' One or more layer IDs to render opacity controls to. If NULL (the default),
-#' will create controls for all layers and graphical components.
+#' One or more layer IDs to render opacity controls to.
 #' @param collapsed
 #' If FALSE (the default), the opacity control will always appear
 #' in its expanded state. Set to TRUE to have the opacity control
@@ -35,7 +40,11 @@
 #'   addOpacityControls(layerId = c("raster", "hospital"), collapsed = FALSE, position = "topright", label = "Opacity Control")
 #'
 #' @export
-addOpacityControls <- function(map, layerId = NULL,
+addOpacityControls <- function(map,
+                               type = c("category", "group", "layerId"),
+                               category = NULL,
+                               group = NULL,
+                               layerId = NULL,
                                collapsed = FALSE,
                                position = c(
                                  "topright",
@@ -43,107 +52,20 @@ addOpacityControls <- function(map, layerId = NULL,
                                  "bottomright",
                                  "bottomleft"
                                ),
-                               title = NULL) {
+                               title = NULL,
+                               renderOnLayerAdd = FALSE) {
 
-
+  if (inherits(map, "leaflet_proxy"))
+    stop("LeafletProxy is not supported. Please use this function with renderOnLayerAdd set to TRUE.")
+  stopifnot(inherits(map, "leaflet"))
+  if (!is.null(category)) stopifnot(inherits(category, "character"))
+  if (!is.null(group)) stopifnot(inherits(group, "character"))
   if (!is.null(layerId)) stopifnot(inherits(layerId, "character"))
-  position <- match.arg(position)
-  stopifnot(inherits(collapsed, "logical"),
-            length(collapsed) == 1)
-  if (!is.null(title))
-    stopifnot(inherits(title, "character"),
-              length(title) == 1)
-
-  if (isTRUE(collapsed) && !is.null(title)) {
-    warning("Not possible to set control title when collapsed is TRUE.")
-    title <- NULL
-  }
-
-  data <- list(layerIds = layerId,
-               options = list(
-                 collapsed = collapsed,
-                 position = position,
-                 label = title
-               ))
-
-  map <- registerPlugin(map, dependencies())
-
-  htmlwidgets::onRender(
-    map,
-    htmlwidgets::JS(
-      'function(el, x, data) {
-
-        var map = this;
-
-        if (data.layerIds == null) {
-        var layers = removePrefix(map.layerManager._byLayerId);
-        } else {
-        var allLayers = getAllLayers(map.layerManager._byStamp);
-        var layers = subsetByLayerId(allLayers, data.layerIds);
-        };
-
-        //OpacityControl
-        L.control.opacity(
-          layers,
-          options = {
-            collapsed: data.options.collapsed,
-            position: data.options.position,
-            label: data.options.label
-          }
-        ).addTo(map);
-
-        }'), data)
-
-}
-
-
-#' Add Dynamic Opacity Controls
-#'
-#' @param map
-#' The map to add the opacity controls to.
-#' @param type
-#' @param category
-#' One or more categories to render opacity controls to.
-#' @param group
-#' One or more groups to render opacity controls to.
-#' @param layerId
-#' One or more layer IDs to render opacity controls to.
-#' @param collapsed
-#' If FALSE (the default), the opacity control will always appear
-#' in its expanded state. Set to TRUE to have the opacity control
-#' rendered as an icon that expands when hovered over.
-#' @param position
-#' Position of control: "topleft", "topright", "bottomleft", or "bottomright".
-#' @param title
-#' The control title.
-#'
-#' @return
-#' @export
-#'
-#' @examples
-addDynamicOpacityControls <- function(map,
-                                      type = c("category", "group", "layerId"),
-                                      category = NULL,
-                                      group = NULL,
-                                      layerId = NULL,
-                                      collapsed = FALSE,
-                                      position = c(
-                                        "topright",
-                                        "topleft",
-                                        "bottomright",
-                                        "bottomleft"
-                                      ),
-                                      title = NULL) {
-
-
+  stopifnot(inherits(collapsed, "logical"), length(collapsed) == 1)
+  if (!is.null(title)) stopifnot(inherits(title, "character"), length(title) == 1)
+  stopifnot(inherits(renderOnLayerAdd, "logical"), length(renderOnLayerAdd) == 1)
   type <- match.arg(type)
-  if (!is.null(layerId)) stopifnot(inherits(layerId, "character"))
   position <- match.arg(position)
-  stopifnot(inherits(collapsed, "logical"),
-            length(collapsed) == 1)
-  if (!is.null(title))
-    stopifnot(inherits(title, "character"),
-              length(title) == 1)
 
   if (isTRUE(collapsed) && !is.null(title)) {
     warning("Not possible to set control title when collapsed is TRUE.")
@@ -160,19 +82,10 @@ addDynamicOpacityControls <- function(map,
                  label = title
                ))
 
-  # # Add options to map
-  # multiopacity <- list(
-  #   type = type
-  # )
-
-  # map$x$options <- c(map$x$options,
-                    # multiopacity = list(multiopacity))
-
   map <- registerPlugin(map, dependencies())
 
-  htmlwidgets::onRender(
-    map,
-    htmlwidgets::JS('
+  if (renderOnLayerAdd) {
+    jsCode <- htmlwidgets::JS('
       function(el, x, data) {
         var multiopacityControl;
         var map = this;
@@ -207,39 +120,45 @@ addDynamicOpacityControls <- function(map,
               ).addTo(map);
           }
         )
-      }'), data)
+      }')
+  } else {
+    jsCode <- htmlwidgets::JS('
+      function(el, x, data) {
+        var multiopacityControl;
+        var map = this;
+        // remove previous multiopacityControl if it exists
+        if (multiopacityControl !== undefined) {
+          multiopacityControl.remove()
+        }
+        var allLayers = getAllLayers(map.layerManager._byStamp)
+        switch (data.options.type) {
+          case "category":
+            var layers = subsetByCategory(allLayers, data.category);
+            break;
+          case "group":
+            var layers = subsetByGroup(allLayers, data.group);
+            break;
+          case "layerId":
+            var layers = subsetByLayerId(allLayers, data.layerId);
+            break;
+          default:
+            break;
+        }
+        //OpacityControl
+        multiopacityControl = L.control.opacity(
+          layers,
+          options = {
+            collapsed: data.options.collapsed,
+            position: data.options.position,
+            label: data.options.label
+          }
+        ).addTo(map);
+      }')
+  }
+
+  htmlwidgets::onRender(
+    map,
+    jsCode = jsCode,
+    data = data)
 
 }
-
-# //if (map.options.multiopacity.type == "category") {
-#   if (data.options.type == "category") {
-#     map.on("layeradd",
-#            function(e) {
-#              // remove previous multiopacityControl if it exists
-#              if (multiopacityControl !== undefined) {
-#                multiopacityControl.remove()
-#              }
-#              var allLayers = getAllLayers(map.layerManager._byStamp);
-#              var layers = subsetByCategory(allLayers, data.category);
-#              //OpacityControl
-#              multiopacityControl = L.control.opacity(
-#                layers,
-#                options = {
-#                  collapsed: data.options.collapsed,
-#                  position: data.options.position,
-#                  label: data.options.label
-#                }
-#              ).addTo(map);
-#            }
-#     );
-#   }
-
-# Subsetting by group or category (type)
-# map.layerManager._byGroup.hospital
-# map.layerManager._byCategory.image
-# by type (another solution)
-# map.layerManager._byLayer
-# subset keynames (tile, image, marker)
-
-
-
