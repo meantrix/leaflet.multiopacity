@@ -18,7 +18,3 @@ Leaflet map with plugin registered (JS dependencies added).
 \description{
 Register Plugin to leaflet map
 }
-\examples{
-leaflet() \%>\%
-  leaflet.multiopacity::registerPlugin(dependencies())
-}

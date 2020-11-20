@@ -56,7 +56,10 @@ crs(r) <- crs("+init=epsg:4326")
 leaflet() \%>\%
   addProviderTiles("Wikimedia", layerId = "Wikimedia") \%>\%
   addRasterImage(r, layerId = "raster") \%>\%
-  addAwesomeMarkers(lng = -2.79545, lat = 54.04321, layerId = "hospital", label = "Hospital") \%>\%
-  addOpacityControls(layerId = c("raster", "hospital"), collapsed = FALSE, position = "topright", title = "Opacity Control")
+  addAwesomeMarkers(lng = -2.79545, lat = 54.04321,
+                    layerId = "hospital", label = "Hospital") \%>\%
+  addOpacityControls(layerId = c("raster", "hospital"),
+                     collapsed = FALSE, position = "topright",
+                     title = "Opacity Control")
 
 }
