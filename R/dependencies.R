@@ -25,7 +25,7 @@ dependencies <- function() {
 #' @param map
 #' The map to register the plugin.
 #' @param plugin
-#' List with JavaScript dependencies (`from htmltools::htmlDependency`)
+#' List with JavaScript dependencies (from 'htmltools::htmlDependency')
 #' to register.
 #'
 #' @return

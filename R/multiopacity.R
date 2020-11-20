@@ -19,7 +19,7 @@
 #' @param renderOnLayerAdd
 #' When this argument is TRUE, the controls will only appear when a new
 #' layer is added and rendered in the map. This can be useful if you plan
-#' to use `leafletProxy` and need the controls to be dinamically updated.
+#' to use 'leafletProxy' and need the controls to be dinamically updated.
 #'
 #' @examples
 #' # Load libraries
