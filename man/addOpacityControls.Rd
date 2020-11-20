@@ -7,16 +7,22 @@
 addOpacityControls(
   map,
   layerId = NULL,
+  category = NULL,
+  group = NULL,
   collapsed = FALSE,
   position = c("topright", "topleft", "bottomright", "bottomleft"),
-  title = NULL
+  title = NULL,
+  renderOnLayerAdd = FALSE
 )
 }
 \arguments{
 \item{map}{The map to add the opacity controls to.}
 
-\item{layerId}{One or more layer IDs to render opacity controls to. If NULL (the default),
-will create controls for all layers and graphical components.}
+\item{layerId}{One or more layer IDs to render opacity controls to.}
+
+\item{category}{One or more categories to render opacity controls to.}
+
+\item{group}{One or more groups to render opacity controls to.}
 
 \item{collapsed}{If FALSE (the default), the opacity control will always appear
 in its expanded state. Set to TRUE to have the opacity control
@@ -25,6 +31,10 @@ rendered as an icon that expands when hovered over.}
 \item{position}{Position of control: "topleft", "topright", "bottomleft", or "bottomright".}
 
 \item{title}{The control title.}
+
+\item{renderOnLayerAdd}{When this argument is TRUE, the controls will only appear when a new
+layer is added and rendered in the map. This can be useful if you plan
+to use `leafletProxy` and need the controls to be dinamically updated.}
 }
 \description{
 Add Opacity Controls
@@ -40,13 +50,13 @@ r <- raster(xmn = -2.8, xmx = -2.79,
             ymn = 54.04, ymx = 54.05,
             nrows = 30, ncols = 30)
 values(r) <- matrix(1:900, nrow(r), ncol(r), byrow = TRUE)
-crs(r) <- CRS("+init=epsg:4326")
+crs(r) <- crs("+init=epsg:4326")
 
 # If layerId not specified, will show controls all layers
 leaflet() \%>\%
   addProviderTiles("Wikimedia", layerId = "Wikimedia") \%>\%
   addRasterImage(r, layerId = "raster") \%>\%
   addAwesomeMarkers(lng = -2.79545, lat = 54.04321, layerId = "hospital", label = "Hospital") \%>\%
-  addOpacityControls(layerId = c("raster", "hospital"), collapsed = FALSE, position = "topright", label = "Opacity Control")
+  addOpacityControls(layerId = c("raster", "hospital"), collapsed = FALSE, position = "topright", title = "Opacity Control")
 
 }

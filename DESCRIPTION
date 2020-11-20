@@ -23,4 +23,6 @@ Imports:
     htmltools
 Suggests: 
     leaflet,
-    testthat
+    testthat,
+    magrittr,
+    raster
