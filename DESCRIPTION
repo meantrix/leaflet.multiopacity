@@ -25,4 +25,5 @@ Suggests:
     leaflet,
     testthat,
     magrittr,
-    raster
+    raster,
+    covr

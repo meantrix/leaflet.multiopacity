@@ -9,7 +9,7 @@ registerPlugin(map, plugin)
 \arguments{
 \item{map}{The map to register the plugin.}
 
-\item{plugin}{List with JavaScript dependencies (`from htmltools::htmlDependency`)
+\item{plugin}{List with JavaScript dependencies (from 'htmltools::htmlDependency')
 to register.}
 }
 \value{
