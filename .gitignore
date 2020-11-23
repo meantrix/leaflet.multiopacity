@@ -7,3 +7,4 @@ pkgdown
 vignettes/*.R
 .DS_Store
 examples
+inst/doc

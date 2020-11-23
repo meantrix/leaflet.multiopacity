@@ -20,7 +20,9 @@ addOpacityControls(
 
 \item{layerId}{One or more layer IDs to render opacity controls to.}
 
-\item{category}{One or more categories to render opacity controls to.}
+\item{category}{One or more categories to render opacity controls to.
+Tested categories are "tile" (base layers), "image"
+(e.g. raster) and "marker".}
 
 \item{group}{One or more groups to render opacity controls to.}
 
@@ -52,13 +54,25 @@ r <- raster(xmn = -2.8, xmx = -2.79,
 values(r) <- matrix(1:900, nrow(r), ncol(r), byrow = TRUE)
 crs(r) <- crs("+init=epsg:4326")
 
-# If layerId not specified, will show controls all layers
+# Provide layerId, group or category to show opacity controls
+# If not specified, will render controls for all layers
+# Example using layerId
 leaflet() \%>\%
   addProviderTiles("Wikimedia", layerId = "Wikimedia") \%>\%
   addRasterImage(r, layerId = "raster") \%>\%
   addAwesomeMarkers(lng = -2.79545, lat = 54.04321,
                     layerId = "hospital", label = "Hospital") \%>\%
   addOpacityControls(layerId = c("raster", "hospital"),
+                     collapsed = FALSE, position = "topright",
+                     title = "Opacity Control")
+
+# Example using category
+leaflet() \%>\%
+  addProviderTiles("Wikimedia", layerId = "Wikimedia") \%>\%
+  addRasterImage(r, layerId = "raster") \%>\%
+  addAwesomeMarkers(lng = -2.79545, lat = 54.04321,
+                    layerId = "hospital", label = "Hospital") \%>\%
+  addOpacityControls(category = c("image", "marker"),
                      collapsed = FALSE, position = "topright",
                      title = "Opacity Control")
 

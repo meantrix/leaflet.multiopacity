@@ -7,7 +7,8 @@ Authors@R:
       given = "Vinícius",
       family = "Zendron",
       role = c("aut", "cre"),
-      email = "vinicius.zendron@meantrix.com")
+      email = "vinicius.zendron@meantrix.com"),
+      person("Meantrix", role = c("cph"), email = "dev@meantrix.com")
     )
 Maintainer: Meantrix <dev@meantrix.com>
 Description: Extends Leaflet for R by adding widget to control opacity of multiple layers.
@@ -27,4 +28,7 @@ Suggests:
     magrittr,
     raster,
     rgdal,
-    covr
+    covr,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

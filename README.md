@@ -1,4 +1,4 @@
-# leaflet.multiopacity <a href='http://meantrix.com'><img src='man/figures/logo.png' align="right" height="139" /></a>
+## leaflet.multiopacity <a href='http://meantrix.com'><img src='man/figures/logo.png' align="right" height="139" /></a>
 
 <!-- 
 # leaflet.multiopacity
@@ -11,16 +11,15 @@
 [![version](https://img.shields.io/badge/version-0.1.0-blue.svg)](https://semver.org)
 <!-- badges: end -->
 
-  
-Extends Leaflet for R by adding widget to control opacity of multiple layers, based on **Leaflet.Control.Opacity** ([dayjournal/Leaflet.Control.Opacity](https://github.com/dayjournal/Leaflet.Control.Opacity)) JS plugin with some modifications to support layers other than tile layers (currently tested: tile, image and marker).
+### Overview
 
-## Prerequisites
+Extends Leaflet for R by adding widget to control opacity of multiple layers, based on **Leaflet.Control.Opacity** ([dayjournal/Leaflet.Control.Opacity](https://github.com/dayjournal/Leaflet.Control.Opacity)) JavaScript plugin with some modifications to support layers other than tile layers (currently tested: tile, image and marker).
+
+### Installation
 
 Before you begin, ensure you have met the following requirement(s):
 
 - You have `R >= 3.5.0` installed.
-
-## Installation
 
 This package is not yet released on CRAN. Meanwhile, you can install the latest stable version from Github with:
 
@@ -29,16 +28,41 @@ if (!require("remotes")) install.packages("remotes")
 remotes::install_github("meantrix/leaflet.multiopacity@main")
 ```
 
-## Basic Usage
+### Basic Usage
 
 `leaflet.multiopacity` provides the function `addOpacityControls` to include opacity sliders in leaflet map.
 
 ```r
+# Load libraries
+library(leaflet)
+library(leaflet.multiopacity)
+library(raster)
 
+# Create raster example
+r <- raster(xmn = -2.8, xmx = -2.79,
+            ymn = 54.04, ymx = 54.05,
+            nrows = 30, ncols = 30)
+values(r) <- matrix(1:900, nrow(r), ncol(r), byrow = TRUE)
+crs(r) <- crs("+init=epsg:4326")
 
+# Provide layerId, group or category to show opacity controls
+# If not specified, will render controls for all layers
+leaflet() %>%
+  addProviderTiles("Wikimedia", layerId = "Wikimedia") %>%
+  addRasterImage(r, layerId = "raster") %>%
+  addAwesomeMarkers(lng = -2.79545, lat = 54.04321,
+                    layerId = "hospital", label = "Hospital") %>%
+  addOpacityControls(layerId = c("raster", "hospital"),
+                     collapsed = FALSE, position = "topright",
+                     title = "Opacity Control")
 ```
 
-## Contributing to leaflet.multiopacity
+For more information and examples, please take a look at the vignettes.
+
+[Usage with leaflet](https://meantrix.github.io/leaflet.multiopacity/articles/usage-leaflet.html)
+[Usage with leafletProxy](https://meantrix.github.io/leaflet.multiopacity/articles/usage-leafletProxy.html)
+
+### Contributing to leaflet.multiopacity
 
 To contribute to `leaflet.multiopacity`, follow these steps:
 
@@ -50,10 +74,10 @@ To contribute to `leaflet.multiopacity`, follow these steps:
 
 Alternatively see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
-## Bug Reports
+### Bug Reports
 
-If you have detected a bug (or want to ask for a new feature), please file an issue with a minimal reproducible example on [GitHub](https://github.com/meantrix/leaflet.multiopacity/issues).
+If you have detected a bug (or want to ask for a new feature), please file an issue with a minimal [reproducible example](https://www.tidyverse.org/help/#reprex) on [GitHub](https://github.com/meantrix/leaflet.multiopacity/issues).
 
-## License
+### License
 
 This project uses the following license: [MIT Licence](<https://github.com/meantrix/leaflet.multiopacity/blob/master/LICENSE>).
