@@ -35,6 +35,7 @@ remotes::install_github("meantrix/leaflet.multiopacity@main")
 
 ```r
 
+
 ```
 
 ## Contributing to leaflet.multiopacity
