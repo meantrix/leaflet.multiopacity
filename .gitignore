@@ -3,6 +3,7 @@
 .RData
 .Ruserdata
 docs
+pkgdown
 vignettes/*.R
 .DS_Store
 examples

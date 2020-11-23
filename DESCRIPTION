@@ -26,4 +26,5 @@ Suggests:
     testthat,
     magrittr,
     raster,
+    rgdal,
     covr
