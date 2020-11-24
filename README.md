@@ -7,7 +7,7 @@
 
 <!-- badges: start -->
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![Codecov test coverage](https://codecov.io/gh/meantrix/leaflet.multiopacity/branch/master/graph/badge.svg)](https://codecov.io/gh/meantrix/leaflet.multiopacity?branch=master)
+[![Codecov test coverage](https://codecov.io/gh/meantrix/leaflet.multiopacity/branch/main/graph/badge.svg)](https://codecov.io/gh/meantrix/leaflet.multiopacity?branch=main)
 [![version](https://img.shields.io/badge/version-0.1.0-blue.svg)](https://semver.org)
 <!-- badges: end -->
 
