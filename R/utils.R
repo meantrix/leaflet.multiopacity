@@ -45,9 +45,9 @@ registerPlugin <- function(map, plugin) {
 leafletDebug <- function(map) {
   htmlwidgets::onRender(
     map,
-    jsCode = JS("function(el, x) {
-                  var map = this;
-                  debugger;
-                }")
+    jsCode = htmlwidgets::JS("function(el, x) {
+                              var map = this;
+                              debugger;
+                             }")
   )
 }
