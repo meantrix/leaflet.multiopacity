@@ -57,9 +57,10 @@ leaflet() %>%
                      title = "Opacity Control")
 ```
 
-For more information and examples, please take a look at the vignettes.
+For more information and examples, please take a look at the vignettes:
 
-[Usage with leaflet](https://meantrix.github.io/leaflet.multiopacity/articles/usage-leaflet.html)
+[Usage with leaflet](https://meantrix.github.io/leaflet.multiopacity/articles/usage-leaflet.html)  
+
 [Usage with leafletProxy](https://meantrix.github.io/leaflet.multiopacity/articles/usage-leafletProxy.html)
 
 ### Contributing to leaflet.multiopacity
@@ -80,4 +81,4 @@ If you have detected a bug (or want to ask for a new feature), please file an is
 
 ### License
 
-This project uses the following license: [MIT Licence](<https://github.com/meantrix/leaflet.multiopacity/blob/master/LICENSE>).
+This project uses the following license: [MIT License](<https://github.com/meantrix/leaflet.multiopacity/blob/master/LICENSE>).

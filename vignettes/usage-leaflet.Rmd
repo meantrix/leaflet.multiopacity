@@ -30,14 +30,16 @@ This package provides several ways to display opacity controls. The most basic u
 
 ```{r}
 leaflet() %>%
-  addProviderTiles("Wikimedia") %>%
-  addRasterImage(r) %>%
+  addProviderTiles("Wikimedia", layerId = "base") %>%
+  addRasterImage(r, layerId = "rast") %>%
   addAwesomeMarkers(lng = -2.79545, lat = 54.04321,
-                    label = "Hospital") %>%
+                    label = "Hospital", layerId = "hospital") %>%
   addOpacityControls()
 ```
 
-But this function allows you to customize some interface aspects such as box title, position and whether opacity controls will remain collapsed.
+Note that each function call has its own layerId. If you don't provide a layerId for your layers, the opacity controls will still work, but will use the internal `_leaflet_id` as a label for each control.
+
+You can also customize some interface aspects such as box title, position and whether opacity controls will remain collapsed.
 
 ```{r}
 leaflet() %>%

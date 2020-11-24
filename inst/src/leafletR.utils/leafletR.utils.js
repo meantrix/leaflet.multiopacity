@@ -17,14 +17,20 @@ function getAllLayers(ObjectByStamp) {
   var layerObjs = {};
   for (var i = 0; i < Object.keys(ObjectByStamp).length; i++) {
     var layer = Object.values(ObjectByStamp)[i];
+    var layerId;
+    if (layer.layerId === null) {
+      layerId = layer.layer._leaflet_id;
+    } else {
+      layerId = layer.layerId;
+    }
     var layerObj = {
-      layerId: layer.layerId,
+      layerId: layerId, //layer.layerId,
       category: layer.category,
       group: layer.group,
       _leaflet_id: layer.layer._leaflet_id,
       layer: layer.layer
     };
-    layerObjs[layer.layerId] = layerObj;
+    layerObjs[layerId] = layerObj;
   }
   return(layerObjs);
 }
