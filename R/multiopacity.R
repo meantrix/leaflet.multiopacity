@@ -44,9 +44,7 @@
 #'   addRasterImage(r, layerId = "raster") %>%
 #'   addAwesomeMarkers(lng = -2.79545, lat = 54.04321,
 #'                     layerId = "hospital", label = "Hospital") %>%
-#'   addOpacityControls(layerId = c("raster", "hospital"),
-#'                      collapsed = FALSE, position = "topright",
-#'                      title = "Opacity Control")
+#'   addOpacityControls(layerId = c("raster", "hospital"))
 #'
 #' # Example using category
 #' leaflet() %>%
@@ -54,9 +52,7 @@
 #'   addRasterImage(r, layerId = "raster") %>%
 #'   addAwesomeMarkers(lng = -2.79545, lat = 54.04321,
 #'                     layerId = "hospital", label = "Hospital") %>%
-#'   addOpacityControls(category = c("image", "marker"),
-#'                      collapsed = FALSE, position = "topright",
-#'                      title = "Opacity Control")
+#'   addOpacityControls(category = c("image", "marker"))
 #'
 #' @export
 addOpacityControls <- function(map,
