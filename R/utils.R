@@ -35,8 +35,14 @@ registerPlugin <- function(map, plugin) {
   return(map)
 }
 
-#' Debug leaflet map
-.leafletDebug <- function(map) {
+#' Leaflet Debug
+#'
+#' Debug a leaflet map in client side using browser inspector tools.
+#'
+#' @param map Leaflet map.
+#'
+#' @return Leaflet map.
+leafletDebug <- function(map) {
   htmlwidgets::onRender(
     map,
     jsCode = JS("function(el, x) {
