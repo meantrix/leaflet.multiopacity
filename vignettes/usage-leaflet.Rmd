@@ -28,7 +28,7 @@ crs(r) <- CRS("+init=epsg:4326")
 
 This package provides several ways to display opacity controls. The most basic use is calling `addOpacityControls()` function without any argument.
 
-```{r}
+```{r, warning=FALSE}
 leaflet() %>%
   addProviderTiles("OpenStreetMap", layerId = "base") %>%
   addRasterImage(r, layerId = "rast") %>%
@@ -41,7 +41,7 @@ Note that each function call has its own layerId. If you don't provide a layerId
 
 You can also customize some interface aspects such as box title, position and whether opacity controls will remain collapsed.
 
-```{r}
+```{r, warning=FALSE}
 leaflet() %>%
   addProviderTiles("OpenStreetMap", layerId = "base") %>%
   addRasterImage(r, layerId = "rast") %>%
@@ -52,7 +52,7 @@ leaflet() %>%
 
 You can also define the subset of layers you want to show opacity controls to. You can provide the layerId of the layers to be shown.
 
-```{r}
+```{r, warning=FALSE}
 leaflet() %>%
   addProviderTiles("OpenStreetMap", layerId = "osm") %>%
   addRasterImage(r, layerId = "rast") %>%
@@ -63,7 +63,7 @@ leaflet() %>%
 
 Or the groups, if you have groups defined.
 
-```{r}
+```{r, warning=FALSE}
 leaflet() %>%
   addProviderTiles("OpenStreetMap", layerId = "osm", group = "base") %>%
   addRasterImage(r, layerId = "rast", group = "rasters") %>%
@@ -75,7 +75,7 @@ leaflet() %>%
 
 Or even category. For example, if you want to show only rasters (category "image") or markers (category "marker"), you could specify the categories as below.
 
-```{r}
+```{r, warning=FALSE}
 leaflet() %>%
   addProviderTiles("OpenStreetMap") %>%
   addRasterImage(r, layerId = "rast") %>%
