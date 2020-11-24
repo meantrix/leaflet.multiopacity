@@ -36,10 +36,15 @@ rendered as an icon that expands when hovered over.}
 
 \item{renderOnLayerAdd}{When this argument is TRUE, the controls will only appear when a new
 layer is added and rendered in the map. This can be useful if you plan
-to use 'leafletProxy' and need the controls to be dinamically updated.}
+to use 'leafletProxy()' and need the controls to be dinamically updated.}
 }
 \description{
-Add Opacity Controls
+Add opacity controls to leaflet map. It is possible to choose which layers will
+have an opacity slider control by passing one of the arguments "category", "group"
+or "layerId" (passing more than one of these arguments will cause the others to
+be ignored). It is possible to pass one or more of each layerIds, categories or
+groups. If you leave these arguments with the default value (NULL), the opacity
+controls will be created to every layer in the map.
 }
 \examples{
 # Load libraries
