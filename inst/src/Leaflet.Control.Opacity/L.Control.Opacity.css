@@ -36,14 +36,6 @@ input[type="range"]::-ms-thumb {
     margin: 0px 0px 8px 1px
 }
 
-/*
-.leaflet-control-layers-toggle-opacity {
-    background-image: url(images/layers.png);
-    width: 36px;
-    height: 36px;
+.multiopacity {
+    background-image: url(images/alpha.png)!important;
 }
-.leaflet-retina .leaflet-control-layers-toggle-opacity {
-    background-image: url(images/layers-2x.png);
-    background-size: 26px 26px;
-}
-*/

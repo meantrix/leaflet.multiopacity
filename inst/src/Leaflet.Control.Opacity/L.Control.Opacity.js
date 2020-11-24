@@ -57,8 +57,8 @@ L.Control.Opacity = L.Control.extend({
 				}, this);
 			}
 		}
-		var link = this._layersLink = L.DomUtil.create('a', className + '-toggle', container);
-		//var link = this._layersLink = L.DomUtil.create('a', className + '-toggle-opacity', container);
+		//var link = this._layersLink = L.DomUtil.create('a', className + '-toggle', container);
+		var link = this._layersLink = L.DomUtil.create('a', className + '-toggle multiopacity', container);
 		link.href = '#';
 		link.title = 'Layers';
 		if (L.Browser.touch) {
