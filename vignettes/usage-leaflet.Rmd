@@ -26,7 +26,7 @@ values(r) <- matrix(1:900, nrow(r), ncol(r), byrow = TRUE)
 crs(r) <- CRS("+init=epsg:4326")
 ```
 
-This package provides several ways to display opacity controls. The most basic usage is calling `addOpacityControls()` function without any argument.
+This package provides several ways to display opacity controls. The most basic use is calling `addOpacityControls()` function without any argument.
 
 ```{r}
 leaflet() %>%
