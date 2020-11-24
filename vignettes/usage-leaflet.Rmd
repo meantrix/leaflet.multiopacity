@@ -30,7 +30,7 @@ This package provides several ways to display opacity controls. The most basic u
 
 ```{r}
 leaflet() %>%
-  addProviderTiles("Wikimedia", layerId = "base") %>%
+  addProviderTiles("OpenStreetMap", layerId = "base") %>%
   addRasterImage(r, layerId = "rast") %>%
   addAwesomeMarkers(lng = -2.79545, lat = 54.04321,
                     label = "Hospital", layerId = "hospital") %>%
@@ -43,7 +43,7 @@ You can also customize some interface aspects such as box title, position and wh
 
 ```{r}
 leaflet() %>%
-  addProviderTiles("Wikimedia", layerId = "base") %>%
+  addProviderTiles("OpenStreetMap", layerId = "base") %>%
   addRasterImage(r, layerId = "rast") %>%
   addAwesomeMarkers(lng = -2.79545, lat = 54.04321,
                     label = "Hospital", layerId = "hospital") %>%
@@ -54,7 +54,7 @@ You can also define the subset of layers you want to show opacity controls to. Y
 
 ```{r}
 leaflet() %>%
-  addProviderTiles("Wikimedia", layerId = "wikimedia") %>%
+  addProviderTiles("OpenStreetMap", layerId = "osm") %>%
   addRasterImage(r, layerId = "rast") %>%
   addAwesomeMarkers(lng = -2.79545, lat = 54.04321,
                     layerId = "hospital", label = "hospital") %>%
@@ -65,7 +65,7 @@ Or the groups, if you have groups defined.
 
 ```{r}
 leaflet() %>%
-  addProviderTiles("Wikimedia", layerId = "wikimedia", group = "base") %>%
+  addProviderTiles("OpenStreetMap", layerId = "osm", group = "base") %>%
   addRasterImage(r, layerId = "rast", group = "rasters") %>%
   addAwesomeMarkers(lng = -2.79545, lat = 54.04321,
                     layerId = "hospital", label = "hospital",
@@ -77,7 +77,7 @@ Or even category. For example, if you want to show only rasters (category "image
 
 ```{r}
 leaflet() %>%
-  addProviderTiles("Wikimedia") %>%
+  addProviderTiles("OpenStreetMap") %>%
   addRasterImage(r, layerId = "rast") %>%
   addAwesomeMarkers(lng = -2.79545, lat = 54.04321,
                     label = "hospital", layerId = "hospital") %>%
