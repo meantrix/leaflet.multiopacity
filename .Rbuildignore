@@ -1,3 +1,7 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^codecov\.yml$
+^docs
+pkgdown
+examples
+inst/doc
