@@ -1,7 +1,7 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^codecov\.yml$
-^docs
-pkgdown
+^.github$
+^docs$
+^pkgdown$
 examples
-inst/doc
