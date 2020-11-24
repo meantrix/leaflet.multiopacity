@@ -1,0 +1,85 @@
+---
+title: "Usage with leaflet"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Usage with leaflet}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, warning=FALSE, message=FALSE}
+library(leaflet)
+library(leaflet.multiopacity)
+library(raster)
+# Create raster example
+r <- raster(xmn = -2.8, xmx = -2.79,
+            ymn = 54.04, ymx = 54.05,
+            nrows = 30, ncols = 30)
+values(r) <- matrix(1:900, nrow(r), ncol(r), byrow = TRUE)
+crs(r) <- CRS("+init=epsg:4326")
+```
+
+This package provides several ways to display opacity controls. The most basic use is calling `addOpacityControls()` function without any argument.
+
+```{r}
+leaflet() %>%
+  addProviderTiles("Wikimedia", layerId = "base") %>%
+  addRasterImage(r, layerId = "rast") %>%
+  addAwesomeMarkers(lng = -2.79545, lat = 54.04321,
+                    label = "Hospital", layerId = "hospital") %>%
+  addOpacityControls()
+```
+
+Note that each function call has its own layerId. If you don't provide a layerId for your layers, the opacity controls will still work, but will use the internal `_leaflet_id` as a label for each control.
+
+You can also customize some interface aspects such as box title, position and whether opacity controls will remain collapsed.
+
+```{r}
+leaflet() %>%
+  addProviderTiles("Wikimedia", layerId = "base") %>%
+  addRasterImage(r, layerId = "rast") %>%
+  addAwesomeMarkers(lng = -2.79545, lat = 54.04321,
+                    label = "Hospital", layerId = "hospital") %>%
+  addOpacityControls(collapsed = TRUE, position = "topleft")
+```
+
+You can also define the subset of layers you want to show opacity controls to. You can provide the layerId of the layers to be shown.
+
+```{r}
+leaflet() %>%
+  addProviderTiles("Wikimedia", layerId = "wikimedia") %>%
+  addRasterImage(r, layerId = "rast") %>%
+  addAwesomeMarkers(lng = -2.79545, lat = 54.04321,
+                    layerId = "hospital", label = "hospital") %>%
+  addOpacityControls(layerId = c("rast", "hospital"))
+```
+
+Or the groups, if you have groups defined.
+
+```{r}
+leaflet() %>%
+  addProviderTiles("Wikimedia", layerId = "wikimedia", group = "base") %>%
+  addRasterImage(r, layerId = "rast", group = "rasters") %>%
+  addAwesomeMarkers(lng = -2.79545, lat = 54.04321,
+                    layerId = "hospital", label = "hospital",
+                    group = "markers") %>%
+  addOpacityControls(group = c("base", "rasters", "markers"))
+```
+
+Or even category. For example, if you want to show only rasters (category "image") or markers (category "marker"), you could specify the categories as below.
+
+```{r}
+leaflet() %>%
+  addProviderTiles("Wikimedia") %>%
+  addRasterImage(r, layerId = "rast") %>%
+  addAwesomeMarkers(lng = -2.79545, lat = 54.04321,
+                    label = "hospital", layerId = "hospital") %>%
+  addOpacityControls(category = c("image", "marker"))
+```

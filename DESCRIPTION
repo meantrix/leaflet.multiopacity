@@ -7,11 +7,28 @@ Authors@R:
       given = "Vinícius",
       family = "Zendron",
       role = c("aut", "cre"),
-      email = "vinicius.zendron@meantrix.com")
+      email = "vinicius.zendron@meantrix.com"),
+      person("Meantrix", role = c("cph"), email = "dev@meantrix.com")
     )
 Maintainer: Meantrix <dev@meantrix.com>
 Description: Extends Leaflet for R by adding widget to control opacity of multiple layers.
 License: MIT + file LICENSE
+URL: https://github.com/meantrix/leaflet.multiopacity
+URLNote: https://github.com/meantrix/leaflet.multiopacity
 BugReports: https://github.com/meantrix/leaflet.multiopacity/issues
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.1.1
+Imports: 
+    htmlwidgets,
+    htmltools
+Suggests: 
+    leaflet,
+    testthat,
+    magrittr,
+    raster,
+    rgdal,
+    covr,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
