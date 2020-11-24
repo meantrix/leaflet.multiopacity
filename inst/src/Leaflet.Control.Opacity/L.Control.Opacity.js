@@ -147,7 +147,7 @@ L.Control.Opacity = L.Control.extend({
 			input = inputs[i];
 			layer = this._getLayer(input.layerId).layer;
 			//if( typeof layer._url === 'undefined'){ // disable url check
-			//}else{
+			//} else {
 			//layer.options.fillOpacity = input.value/100
 			//layer.options.opacity = input.value/100
 			layer.setOpacity(input.value / 100);

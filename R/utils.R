@@ -34,3 +34,14 @@ registerPlugin <- function(map, plugin) {
   map$dependencies <- c(map$dependencies, plugin)
   return(map)
 }
+
+#' Debug leaflet map
+.leafletDebug <- function(map) {
+  htmlwidgets::onRender(
+    map,
+    jsCode = JS("function(el, x) {
+                  var map = this;
+                  debugger;
+                }")
+  )
+}

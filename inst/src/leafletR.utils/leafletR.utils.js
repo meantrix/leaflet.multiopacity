@@ -3,26 +3,7 @@
 // Meantrix
 // #########################
 
-//const clone = (obj) => Object.assign({}, obj);
-
-/*
-function removePrefix(ObjectLayers) {
-  const clonedObj = clone(ObjectLayers);
-  var array = Object.values(clonedObj);
-  var old_keys = Object.keys(clonedObj);
-  for (var i = 0; i < Object.keys(clonedObj).length; i++) {
-    var old_key = old_keys[i];
-    var new_key = old_keys[i].replace("tile\n", "").replace("image\n", "").replace("marker\n", "");
-    if (old_key !== new_key) {
-      Object.defineProperty(clonedObj, new_key,
-                            Object.getOwnPropertyDescriptor(clonedObj, old_key));
-      delete clonedObj[old_key];
-    }
-  }
-  return(clonedObj);
-}
-*/
-
+// Coerce value into array
 function asArray(value) {
   if (value === null)
     return [];
@@ -33,7 +14,6 @@ function asArray(value) {
 
 // Get all layers from map.layerManager._byStamp
 function getAllLayers(ObjectByStamp) {
-  //const clonedObj = clone(ObjectByStamp);
   var layerObjs = {};
   for (var i = 0; i < Object.keys(ObjectByStamp).length; i++) {
     var layer = Object.values(ObjectByStamp)[i];
@@ -88,7 +68,6 @@ function subsetByLayerId(allLayers, layerId) {
 // Subset allLayers by group(s)
 function subsetByGroup(allLayers, group) {
   var res;
-  //debugger;
   if (group === null) {
     res = Object.values(allLayers);
   } else {
