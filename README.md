@@ -6,9 +6,10 @@
 -->
 
 <!-- badges: start -->
+[![version](https://img.shields.io/badge/version-0.1.0-blue.svg)](https://semver.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Codecov test coverage](https://codecov.io/gh/meantrix/leaflet.multiopacity/branch/main/graph/badge.svg)](https://codecov.io/gh/meantrix/leaflet.multiopacity?branch=main)
-[![version](https://img.shields.io/badge/version-0.1.0-blue.svg)](https://semver.org)
+[![R build status](https://github.com/meantrix/leaflet.multiopacity/workflows/R-CMD-check/badge.svg)](https://github.com/meantrix/leaflet.multiopacity/actions)
 <!-- badges: end -->
 
 ### Overview
