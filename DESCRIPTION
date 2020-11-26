@@ -6,11 +6,10 @@ Authors@R:
     c(person(
       given = "Vinícius",
       family = "Zendron",
-      role = c("aut", "cre"),
+      role = "aut",
       email = "vinicius.zendron@meantrix.com"),
-      person("Meantrix", role = c("cph"), email = "dev@meantrix.com")
+      person("Meantrix", role = c("cre", "cph"), email = "dev@meantrix.com")
     )
-Maintainer: Meantrix <dev@meantrix.com>
 Description: Extends Leaflet for R by adding widget to control opacity of multiple layers.
 License: MIT + file LICENSE
 URL: https://github.com/meantrix/leaflet.multiopacity
