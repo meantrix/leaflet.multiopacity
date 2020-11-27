@@ -2,13 +2,21 @@ Package: leaflet.multiopacity
 Type: Package
 Title: Leaflet Multiple Opacity Controls for R
 Version: 0.1.0
-Authors@R: 
-    c(person(
+Authors@R: c(
+    person(
       given = "Vinícius",
       family = "Zendron",
       role = "aut",
       email = "vinicius.zendron@meantrix.com"),
-      person("Meantrix", role = c("cre", "cph"), email = "dev@meantrix.com")
+    person(
+      "Meantrix",
+      role = c("cre", "cph"), 
+      email = "dev@meantrix.com"),
+    person(
+      given = "Yasunori",
+      family = "Kirimoto", 
+      role = c("ctb", "cph"), 
+      comment = "Leaflet.Control.Opacity JavaScript library")
     )
 Description: Extends Leaflet for R by adding widget to control opacity of multiple layers.
 License: MIT + file LICENSE
