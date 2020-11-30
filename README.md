@@ -1,6 +1,6 @@
 ## leaflet.multiopacity <a href='http://meantrix.com'><img src='man/figures/logo.png' align="right" height="139" /></a>
 
-<!-- 
+<!--
 # leaflet.multiopacity
 <a href='http://meantrix.com'><img src='man/figures/header.png'/> 
 -->
