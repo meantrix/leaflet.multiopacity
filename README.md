@@ -23,7 +23,13 @@ Before you begin, ensure you have met the following requirement(s):
 
 - You have `R >= 3.5.0` installed.
 
-This package is not yet released on CRAN. Meanwhile, you can install the latest stable version from Github with:
+Install the latest version released on CRAN:
+
+```r
+install.packages("leaflet.multiopacity")
+```
+
+Or install the development version from GitHub:
 
 ```r
 if (!require("remotes")) install.packages("remotes")
