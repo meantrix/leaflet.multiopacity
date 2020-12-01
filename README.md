@@ -7,6 +7,7 @@
 
 <!-- badges: start -->
 [![version](https://img.shields.io/badge/version-0.1.0-blue.svg)](https://semver.org)
+[![CRAN status](https://www.r-pkg.org/badges/version/leaflet.multiopacity)](https://CRAN.R-project.org/package=leaflet.multiopacity)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Codecov test coverage](https://codecov.io/gh/meantrix/leaflet.multiopacity/branch/main/graph/badge.svg)](https://codecov.io/gh/meantrix/leaflet.multiopacity?branch=main)
 [![R build status](https://github.com/meantrix/leaflet.multiopacity/workflows/R-CMD-check/badge.svg)](https://github.com/meantrix/leaflet.multiopacity/actions)
