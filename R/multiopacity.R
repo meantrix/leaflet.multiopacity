@@ -21,6 +21,8 @@
 #' If FALSE (the default), the opacity control will always appear
 #' in its expanded state. Set to TRUE to have the opacity control
 #' rendered as an icon that expands when hovered over.
+#' @param size
+#' Collapsed control size: "m" (medium) or "s" (small).
 #' @param position
 #' Position of control: "topleft", "topright", "bottomleft", or "bottomright".
 #' @param title
@@ -29,8 +31,6 @@
 #' When this argument is TRUE, the controls will only appear when a new
 #' layer is added and rendered in the map. This can be useful if you plan
 #' to use 'leafletProxy()' and need the controls to be dinamically updated.
-#' @param size
-#' Control size: "m" (medium) or "s" (small).
 #'
 #' @examples
 #' # Load libraries
