@@ -29,6 +29,8 @@
 #' When this argument is TRUE, the controls will only appear when a new
 #' layer is added and rendered in the map. This can be useful if you plan
 #' to use 'leafletProxy()' and need the controls to be dinamically updated.
+#' @param size
+#' Control size: "m" (medium) or "s" (small).
 #'
 #' @examples
 #' # Load libraries
@@ -67,6 +69,7 @@ addOpacityControls <- function(map,
                                category = NULL,
                                group = NULL,
                                collapsed = FALSE,
+                               size = c("m", "s"),
                                position = c(
                                  "topright",
                                  "topleft",
@@ -85,6 +88,7 @@ addOpacityControls <- function(map,
   stopifnot(inherits(collapsed, "logical"), length(collapsed) == 1)
   if (!is.null(title)) stopifnot(inherits(title, "character"), length(title) == 1)
   stopifnot(inherits(renderOnLayerAdd, "logical"), length(renderOnLayerAdd) == 1)
+  size <- match.arg(size)
   position <- match.arg(position)
 
   if (isTRUE(collapsed) && !is.null(title)) {
@@ -101,6 +105,7 @@ addOpacityControls <- function(map,
                  type = type,
                  collapsed = collapsed,
                  position = position,
+                 size = size,
                  label = title
                ))
 
@@ -139,6 +144,7 @@ addOpacityControls <- function(map,
                 options = {
                   collapsed: data.options.collapsed,
                   position: data.options.position,
+                  size: data.options.size,
                   label: data.options.label
                 }
               ).addTo(map);
@@ -175,6 +181,7 @@ addOpacityControls <- function(map,
           options = {
             collapsed: data.options.collapsed,
             position: data.options.position,
+            size: data.options.size,
             label: data.options.label
           }
         ).addTo(map);
