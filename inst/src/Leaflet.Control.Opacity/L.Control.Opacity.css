@@ -33,7 +33,7 @@ input[type="range"]::-ms-thumb {
 
 /* 題名レイアウト */
 .leaflet-control-layers-label {
-    margin: 0px 0px 8px 1px
+    margin: 0px 0px 8px 1px;
 }
 
 .multiopacity-m {
