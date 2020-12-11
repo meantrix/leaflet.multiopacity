@@ -2,6 +2,7 @@ L.Control.Opacity = L.Control.extend({
 	options: {
 		collapsed: false,
 		position: 'topright',
+		size: 'm',
 		label: null
 	},
 	initialize: function (overlays, options) {
@@ -39,6 +40,7 @@ L.Control.Opacity = L.Control.extend({
 		var className = 'leaflet-control-layers',
 		    container = this._container = L.DomUtil.create('div', className),
 		    collapsed = this.options.collapsed;
+		    size = this.options.size;
 		container.setAttribute('aria-haspopup', true);
 		L.DomEvent.disableClickPropagation(container);
 		L.DomEvent.disableScrollPropagation(container);
@@ -58,7 +60,7 @@ L.Control.Opacity = L.Control.extend({
 			}
 		}
 		//var link = this._layersLink = L.DomUtil.create('a', className + '-toggle', container);
-		var link = this._layersLink = L.DomUtil.create('a', className + '-toggle multiopacity', container);
+		var link = this._layersLink = L.DomUtil.create('a', className + '-toggle multiopacity-' + size, container);
 		link.href = '#';
 		link.title = 'Layers';
 		if (L.Browser.touch) {

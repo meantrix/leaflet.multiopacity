@@ -36,6 +36,14 @@ input[type="range"]::-ms-thumb {
     margin: 0px 0px 8px 1px
 }
 
-.multiopacity {
-    background-image: url(images/alpha.png)!important;
+.multiopacity-m {
+    background-image: url(images/alpha-2x.png)!important;
+    background-size: 32px!important;
+}
+
+.multiopacity-s {
+    background-image: url(images/alpha-2x.png)!important;
+    background-size: 20px!important;
+    width: 30px!important;
+    height: 30px!important;
 }

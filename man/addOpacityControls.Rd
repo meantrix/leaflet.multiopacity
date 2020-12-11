@@ -10,6 +10,7 @@ addOpacityControls(
   category = NULL,
   group = NULL,
   collapsed = FALSE,
+  size = c("m", "s"),
   position = c("topright", "topleft", "bottomright", "bottomleft"),
   title = NULL,
   renderOnLayerAdd = FALSE
@@ -29,6 +30,8 @@ Tested categories are "tile" (base layers), "image"
 \item{collapsed}{If FALSE (the default), the opacity control will always appear
 in its expanded state. Set to TRUE to have the opacity control
 rendered as an icon that expands when hovered over.}
+
+\item{size}{Control size: "m" (medium) or "s" (small).}
 
 \item{position}{Position of control: "topleft", "topright", "bottomleft", or "bottomright".}
 
