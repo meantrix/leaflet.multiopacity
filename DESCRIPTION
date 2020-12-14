@@ -1,7 +1,7 @@
 Package: leaflet.multiopacity
 Type: Package
 Title: Leaflet Multiple Opacity Controls for R
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: c(
     person(
       given = "Vinícius",
