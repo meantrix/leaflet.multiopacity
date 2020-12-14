@@ -31,7 +31,7 @@ Tested categories are "tile" (base layers), "image"
 in its expanded state. Set to TRUE to have the opacity control
 rendered as an icon that expands when hovered over.}
 
-\item{size}{Control size: "m" (medium) or "s" (small).}
+\item{size}{Collapsed control size: "m" (medium) or "s" (small).}
 
 \item{position}{Position of control: "topleft", "topright", "bottomleft", or "bottomright".}
 
