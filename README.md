@@ -6,6 +6,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Codecov test coverage](https://codecov.io/gh/meantrix/leaflet.multiopacity/branch/main/graph/badge.svg)](https://codecov.io/gh/meantrix/leaflet.multiopacity?branch=main)
 [![R build status](https://github.com/meantrix/leaflet.multiopacity/workflows/R-CMD-check/badge.svg)](https://github.com/meantrix/leaflet.multiopacity/actions)
+[![cranlogs](https://cranlogs.r-pkg.org/badges/leaflet.multiopacity)](https://CRAN.R-project.org/package=leaflet.multiopacity)
+[![total](https://cranlogs.r-pkg.org/badges/grand-total/leaflet.multiopacity)](https://CRAN.R-project.org/package=leaflet.multiopacity)
 <!-- badges: end -->
 
 ### Overview
