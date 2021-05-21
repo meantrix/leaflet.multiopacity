@@ -58,6 +58,8 @@ controls will be created to every layer in the map." />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -69,9 +71,16 @@ controls will be created to every layer in the map." />
 
 
 
+
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -147,7 +156,7 @@ groups. If you leave these arguments with the default value (NULL), the opacity
 controls will be created to every layer in the map.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>addOpacityControls</span><span class='op'>(</span>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>addOpacityControls</span><span class='op'>(</span>
   <span class='va'>map</span>,
   layerId <span class='op'>=</span> <span class='cn'>NULL</span>,
   category <span class='op'>=</span> <span class='cn'>NULL</span>,
@@ -157,7 +166,7 @@ controls will be created to every layer in the map.</p>
   position <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"topright"</span>, <span class='st'>"topleft"</span>, <span class='st'>"bottomright"</span>, <span class='st'>"bottomleft"</span><span class='op'>)</span>,
   title <span class='op'>=</span> <span class='cn'>NULL</span>,
   renderOnLayerAdd <span class='op'>=</span> <span class='cn'>FALSE</span>
-<span class='op'>)</span></pre>
+<span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -208,8 +217,8 @@ to use 'leafletProxy()' and need the controls to be dinamically updated.</p></td
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># Load libraries</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://rstudio.github.io/leaflet/'>leaflet</a></span><span class='op'>)</span>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='co'># Load libraries</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://rstudio.github.io/leaflet/'>leaflet</a></span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/meantrix/leaflet.multiopacity'>leaflet.multiopacity</a></span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://rspatial.org/raster'>raster</a></span><span class='op'>)</span>
 
@@ -223,22 +232,22 @@ to use 'leafletProxy()' and need the controls to be dinamically updated.</p></td
 <span class='co'># Provide layerId, group or category to show opacity controls</span>
 <span class='co'># If not specified, will render controls for all layers</span>
 <span class='co'># Example using layerId</span>
-<span class='fu'><a href='https://rdrr.io/pkg/leaflet/man/leaflet.html'>leaflet</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/leaflet/man/addProviderTiles.html'>addProviderTiles</a></span><span class='op'>(</span><span class='st'>"Wikimedia"</span>, layerId <span class='op'>=</span> <span class='st'>"Wikimedia"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/leaflet/man/addRasterImage.html'>addRasterImage</a></span><span class='op'>(</span><span class='va'>r</span>, layerId <span class='op'>=</span> <span class='st'>"raster"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+<span class='fu'><a href='https://rdrr.io/pkg/leaflet/man/leaflet.html'>leaflet</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/leaflet/man/leaflet-imports.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://rdrr.io/pkg/leaflet/man/addProviderTiles.html'>addProviderTiles</a></span><span class='op'>(</span><span class='st'>"Wikimedia"</span>, layerId <span class='op'>=</span> <span class='st'>"Wikimedia"</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/leaflet/man/leaflet-imports.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://rdrr.io/pkg/leaflet/man/addRasterImage.html'>addRasterImage</a></span><span class='op'>(</span><span class='va'>r</span>, layerId <span class='op'>=</span> <span class='st'>"raster"</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/leaflet/man/leaflet-imports.html'>%&gt;%</a></span>
   <span class='fu'><a href='https://rdrr.io/pkg/leaflet/man/addAwesomeMarkers.html'>addAwesomeMarkers</a></span><span class='op'>(</span>lng <span class='op'>=</span> <span class='op'>-</span><span class='fl'>2.79545</span>, lat <span class='op'>=</span> <span class='fl'>54.04321</span>,
-                    layerId <span class='op'>=</span> <span class='st'>"hospital"</span>, label <span class='op'>=</span> <span class='st'>"Hospital"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+                    layerId <span class='op'>=</span> <span class='st'>"hospital"</span>, label <span class='op'>=</span> <span class='st'>"Hospital"</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/leaflet/man/leaflet-imports.html'>%&gt;%</a></span>
   <span class='fu'>addOpacityControls</span><span class='op'>(</span>layerId <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"raster"</span>, <span class='st'>"hospital"</span><span class='op'>)</span><span class='op'>)</span>
 
 <span class='co'># Example using category</span>
-<span class='fu'><a href='https://rdrr.io/pkg/leaflet/man/leaflet.html'>leaflet</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/leaflet/man/addProviderTiles.html'>addProviderTiles</a></span><span class='op'>(</span><span class='st'>"Wikimedia"</span>, layerId <span class='op'>=</span> <span class='st'>"Wikimedia"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/leaflet/man/addRasterImage.html'>addRasterImage</a></span><span class='op'>(</span><span class='va'>r</span>, layerId <span class='op'>=</span> <span class='st'>"raster"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+<span class='fu'><a href='https://rdrr.io/pkg/leaflet/man/leaflet.html'>leaflet</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/leaflet/man/leaflet-imports.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://rdrr.io/pkg/leaflet/man/addProviderTiles.html'>addProviderTiles</a></span><span class='op'>(</span><span class='st'>"Wikimedia"</span>, layerId <span class='op'>=</span> <span class='st'>"Wikimedia"</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/leaflet/man/leaflet-imports.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://rdrr.io/pkg/leaflet/man/addRasterImage.html'>addRasterImage</a></span><span class='op'>(</span><span class='va'>r</span>, layerId <span class='op'>=</span> <span class='st'>"raster"</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/leaflet/man/leaflet-imports.html'>%&gt;%</a></span>
   <span class='fu'><a href='https://rdrr.io/pkg/leaflet/man/addAwesomeMarkers.html'>addAwesomeMarkers</a></span><span class='op'>(</span>lng <span class='op'>=</span> <span class='op'>-</span><span class='fl'>2.79545</span>, lat <span class='op'>=</span> <span class='fl'>54.04321</span>,
-                    layerId <span class='op'>=</span> <span class='st'>"hospital"</span>, label <span class='op'>=</span> <span class='st'>"Hospital"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+                    layerId <span class='op'>=</span> <span class='st'>"hospital"</span>, label <span class='op'>=</span> <span class='st'>"Hospital"</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/leaflet/man/leaflet-imports.html'>%&gt;%</a></span>
   <span class='fu'>addOpacityControls</span><span class='op'>(</span>category <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"image"</span>, <span class='st'>"marker"</span><span class='op'>)</span><span class='op'>)</span>
 
-</pre>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -250,11 +259,11 @@ to use 'leafletProxy()' and need the controls to be dinamically updated.</p></td
 
       <footer>
       <div class="copyright">
-  <p>Developed by Vinícius Zendron, Meantrix.</p>
+  <p><p>Developed by Vinícius Zendron, Meantrix.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -262,6 +271,8 @@ to use 'leafletProxy()' and need the controls to be dinamically updated.</p></td
 
   
 
+
+  
 
   </body>
 </html>

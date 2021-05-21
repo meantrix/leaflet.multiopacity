@@ -26,6 +26,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -87,66 +89,66 @@
   <div class="contents col-md-9">
 <div id="leafletmultiopacity-" class="section level2">
 <h2 class="hasAnchor">
-<a href="#leafletmultiopacity-" class="anchor"></a>leaflet.multiopacity <a href="http://meantrix.com"><img src="reference/figures/logo.png" align="right" height="139"></a>
+<a href="#leafletmultiopacity-" class="anchor" aria-hidden="true"></a>leaflet.multiopacity <a href="http://meantrix.com" class="external-link"><img src="reference/figures/logo.png" align="right" height="139"></a>
 </h2>
 <!-- badges: start -->
 
 <div id="overview" class="section level3">
 <h3 class="hasAnchor">
-<a href="#overview" class="anchor"></a>Overview</h3>
-<p>Extends Leaflet for R by adding widget to control opacity of multiple layers, based on <strong>Leaflet.Control.Opacity</strong> (<a href="https://github.com/dayjournal/Leaflet.Control.Opacity">dayjournal/Leaflet.Control.Opacity</a>) JavaScript plugin with some modifications to support layers other than tile layers (currently tested: tile, image and marker).</p>
+<a href="#overview" class="anchor" aria-hidden="true"></a>Overview</h3>
+<p>Extends Leaflet for R by adding widget to control opacity of multiple layers, based on <strong>Leaflet.Control.Opacity</strong> (<a href="https://github.com/dayjournal/Leaflet.Control.Opacity" class="external-link">dayjournal/Leaflet.Control.Opacity</a>) JavaScript plugin with some modifications to support layers other than tile layers (currently tested: tile, image and marker).</p>
 </div>
 <div id="installation" class="section level3">
 <h3 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h3>
+<a href="#installation" class="anchor" aria-hidden="true"></a>Installation</h3>
 <p>Before you begin, ensure you have met the following requirement(s):</p>
 <ul>
 <li>You have <code>R &gt;= 3.5.0</code> installed.</li>
 </ul>
 <p>Install the latest version released on CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"leaflet.multiopacity"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"leaflet.multiopacity"</span><span class="op">)</span></code></pre></div>
 <p>Or install the development version from GitHub:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://remotes.r-lib.org">"remotes"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"meantrix/leaflet.multiopacity@main"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://remotes.r-lib.org" class="external-link">"remotes"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"meantrix/leaflet.multiopacity@main"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="basic-usage" class="section level3">
 <h3 class="hasAnchor">
-<a href="#basic-usage" class="anchor"></a>Basic Usage</h3>
+<a href="#basic-usage" class="anchor" aria-hidden="true"></a>Basic Usage</h3>
 <p><code>leaflet.multiopacity</code> provides the function <code>addOpacityControls</code> to include opacity sliders in leaflet map.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Load libraries</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://rstudio.github.io/leaflet/">leaflet</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/meantrix/leaflet.multiopacity">leaflet.multiopacity</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/raster">raster</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/leaflet/" class="external-link">leaflet</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/meantrix/leaflet.multiopacity" class="external-link">leaflet.multiopacity</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/raster" class="external-link">raster</a></span><span class="op">)</span>
 
 <span class="co"># Create raster example</span>
-<span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/raster.html">raster</a></span><span class="op">(</span>xmn <span class="op">=</span> <span class="op">-</span><span class="fl">2.8</span>, xmx <span class="op">=</span> <span class="op">-</span><span class="fl">2.79</span>,
+<span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/raster.html" class="external-link">raster</a></span><span class="op">(</span>xmn <span class="op">=</span> <span class="op">-</span><span class="fl">2.8</span>, xmx <span class="op">=</span> <span class="op">-</span><span class="fl">2.79</span>,
             ymn <span class="op">=</span> <span class="fl">54.04</span>, ymx <span class="op">=</span> <span class="fl">54.05</span>,
             nrows <span class="op">=</span> <span class="fl">30</span>, ncols <span class="op">=</span> <span class="fl">30</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/raster/man/getValues.html">values</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">900</span>, <span class="fu"><a href="https://rdrr.io/pkg/raster/man/ncell.html">nrow</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/pkg/raster/man/ncell.html">ncol</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/raster/man/projection.html">crs</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/projection.html">crs</a></span><span class="op">(</span><span class="st">"+init=epsg:4326"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/raster/man/getValues.html" class="external-link">values</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">900</span>, <span class="fu"><a href="https://rdrr.io/pkg/raster/man/ncell.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/pkg/raster/man/ncell.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/raster/man/projection.html" class="external-link">crs</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/projection.html" class="external-link">crs</a></span><span class="op">(</span><span class="st">"+init=epsg:4326"</span><span class="op">)</span>
 
 <span class="co"># Provide layerId, group or category to show opacity controls</span>
 <span class="co"># If not specified, will render controls for all layers</span>
-<span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/leaflet.html">leaflet</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/addProviderTiles.html">addProviderTiles</a></span><span class="op">(</span><span class="st">"Wikimedia"</span>, layerId <span class="op">=</span> <span class="st">"Wikimedia"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/addRasterImage.html">addRasterImage</a></span><span class="op">(</span><span class="va">r</span>, layerId <span class="op">=</span> <span class="st">"raster"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/addAwesomeMarkers.html">addAwesomeMarkers</a></span><span class="op">(</span>lng <span class="op">=</span> <span class="op">-</span><span class="fl">2.79545</span>, lat <span class="op">=</span> <span class="fl">54.04321</span>,
-                    layerId <span class="op">=</span> <span class="st">"hospital"</span>, label <span class="op">=</span> <span class="st">"Hospital"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/addOpacityControls.html">addOpacityControls</a></span><span class="op">(</span>layerId <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"raster"</span>, <span class="st">"hospital"</span><span class="op">)</span>,
+<span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/leaflet.html" class="external-link">leaflet</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/leaflet/man/leaflet-imports.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/addProviderTiles.html" class="external-link">addProviderTiles</a></span><span class="op">(</span><span class="st">"Wikimedia"</span>, layerId <span class="op">=</span> <span class="st">"Wikimedia"</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/leaflet/man/leaflet-imports.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/addRasterImage.html" class="external-link">addRasterImage</a></span><span class="op">(</span><span class="va">r</span>, layerId <span class="op">=</span> <span class="st">"raster"</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/leaflet/man/leaflet-imports.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/addAwesomeMarkers.html" class="external-link">addAwesomeMarkers</a></span><span class="op">(</span>lng <span class="op">=</span> <span class="op">-</span><span class="fl">2.79545</span>, lat <span class="op">=</span> <span class="fl">54.04321</span>,
+                    layerId <span class="op">=</span> <span class="st">"hospital"</span>, label <span class="op">=</span> <span class="st">"Hospital"</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/leaflet/man/leaflet-imports.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="reference/addOpacityControls.html">addOpacityControls</a></span><span class="op">(</span>layerId <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"raster"</span>, <span class="st">"hospital"</span><span class="op">)</span>,
                      collapsed <span class="op">=</span> <span class="cn">FALSE</span>, position <span class="op">=</span> <span class="st">"topright"</span>,
                      title <span class="op">=</span> <span class="st">"Opacity Control"</span><span class="op">)</span></code></pre></div>
 <p>For more information and examples, please take a look at the vignettes:</p>
-<p><a href="https://meantrix.github.io/leaflet.multiopacity/articles/usage-leaflet.html">Usage with leaflet</a></p>
-<p><a href="https://meantrix.github.io/leaflet.multiopacity/articles/usage-leafletProxy.html">Usage with leafletProxy</a></p>
+<p><a href="https://meantrix.github.io/leaflet.multiopacity/articles/usage-leaflet.html" class="external-link">Usage with leaflet</a></p>
+<p><a href="https://meantrix.github.io/leaflet.multiopacity/articles/usage-leafletProxy.html" class="external-link">Usage with leafletProxy</a></p>
 </div>
 <div id="contributing-to-leafletmultiopacity" class="section level3">
 <h3 class="hasAnchor">
-<a href="#contributing-to-leafletmultiopacity" class="anchor"></a>Contributing to leaflet.multiopacity</h3>
+<a href="#contributing-to-leafletmultiopacity" class="anchor" aria-hidden="true"></a>Contributing to leaflet.multiopacity</h3>
 <p>To contribute to <code>leaflet.multiopacity</code>, follow these steps:</p>
-<ol>
+<ol style="list-style-type: decimal">
 <li>Fork this repository.</li>
 <li>Create a branch: <code>git checkout -b &lt;branch_name&gt;</code>.</li>
 <li>Make your changes and commit them: <code>git commit -m '&lt;commit_message&gt;'</code>
@@ -155,24 +157,24 @@
 </li>
 <li>Create the pull request.</li>
 </ol>
-<p>Alternatively see the GitHub documentation on <a href="https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request">creating a pull request</a>.</p>
+<p>Alternatively see the GitHub documentation on <a href="https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request" class="external-link">creating a pull request</a>.</p>
 </div>
 <div id="bug-reports" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-reports" class="anchor"></a>Bug Reports</h3>
-<p>If you have detected a bug (or want to ask for a new feature), please file an issue with a minimal <a href="https://www.tidyverse.org/help/#reprex">reproducible example</a> on <a href="https://github.com/meantrix/leaflet.multiopacity/issues">GitHub</a>.</p>
+<a href="#bug-reports" class="anchor" aria-hidden="true"></a>Bug Reports</h3>
+<p>If you have detected a bug (or want to ask for a new feature), please file an issue with a minimal <a href="https://www.tidyverse.org/help/#reprex" class="external-link">reproducible example</a> on <a href="https://github.com/meantrix/leaflet.multiopacity/issues" class="external-link">GitHub</a>.</p>
 </div>
 <div id="license" class="section level3">
 <h3 class="hasAnchor">
-<a href="#license" class="anchor"></a>License</h3>
-<p>This project uses the following license: <a href="https://github.com/meantrix/leaflet.multiopacity/blob/master/LICENSE">MIT License</a>.</p>
+<a href="#license" class="anchor" aria-hidden="true"></a>License</h3>
+<p>This project uses the following license: <a href="https://github.com/meantrix/leaflet.multiopacity/blob/master/LICENSE" class="external-link">MIT License</a>.</p>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
 <li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=leaflet.multiopacity">https://​cloud.r-project.org/​package=leaflet.multiopacity</a>
 </li>
@@ -182,42 +184,50 @@
 </li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
 <li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
+
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Vinícius Zendron <br><small class="roles"> Author </small>  </li>
 <li>Meantrix <br><small class="roles"> Maintainer, copyright holder </small>  </li>
-<li><a href="authors.html">All authors...</a></li>
+<li><a href="authors.html">More on authors...</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://semver.org"><img src="https://img.shields.io/badge/version-0.1.1-blue.svg" alt="version"></a></li>
-<li><a href="https://CRAN.R-project.org/package=leaflet.multiopacity"><img src="https://www.r-pkg.org/badges/version/leaflet.multiopacity" alt="CRAN status"></a></li>
-<li><a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License: MIT"></a></li>
-<li><a href="https://codecov.io/gh/meantrix/leaflet.multiopacity?branch=main"><img src="https://codecov.io/gh/meantrix/leaflet.multiopacity/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
-<li><a href="https://github.com/meantrix/leaflet.multiopacity/actions"><img src="https://github.com/meantrix/leaflet.multiopacity/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://semver.org" class="external-link"><img src="https://img.shields.io/badge/version-0.1.1-blue.svg" alt="version"></a></li>
+<li><a href="https://CRAN.R-project.org/package=leaflet.multiopacity" class="external-link"><img src="https://www.r-pkg.org/badges/version/leaflet.multiopacity" alt="CRAN status"></a></li>
+<li><a href="https://opensource.org/licenses/MIT" class="external-link"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License: MIT"></a></li>
+<li><a href="https://codecov.io/gh/meantrix/leaflet.multiopacity?branch=main" class="external-link"><img src="https://codecov.io/gh/meantrix/leaflet.multiopacity/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://github.com/meantrix/leaflet.multiopacity/actions" class="external-link"><img src="https://github.com/meantrix/leaflet.multiopacity/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://CRAN.R-project.org/package=leaflet.multiopacity" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/leaflet.multiopacity" alt="cranlogs"></a></li>
+<li><a href="https://CRAN.R-project.org/package=leaflet.multiopacity" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/leaflet.multiopacity" alt="total"></a></li>
 </ul>
 </div>
-</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Vinícius Zendron, Meantrix.</p>
+  <p></p>
+<p>Developed by Vinícius Zendron, Meantrix.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p>
 </div>
 
       </footer>
@@ -225,6 +235,8 @@
 
   
 
+
+  
 
   </body>
 </html>

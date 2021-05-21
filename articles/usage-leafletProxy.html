@@ -26,6 +26,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -68,7 +70,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/meantrix/leaflet.multiopacity/">
+  <a href="https://github.com/meantrix/leaflet.multiopacity/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -89,7 +91,7 @@
       <h1 data-toc-skip>Usage with leafletProxy</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/meantrix/leaflet.multiopacity/blob/master/vignettes/usage-leafletProxy.Rmd"><code>vignettes/usage-leafletProxy.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/meantrix/leaflet.multiopacity/blob/master/vignettes/usage-leafletProxy.Rmd" class="external-link"><code>vignettes/usage-leafletProxy.Rmd</code></a></small>
       <div class="hidden name"><code>usage-leafletProxy.Rmd</code></div>
 
     </div>
@@ -97,30 +99,30 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://rstudio.github.io/leaflet/">leaflet</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/meantrix/leaflet.multiopacity">leaflet.multiopacity</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/raster">raster</a></span><span class="op">)</span></code></pre></div>
-<p>If you intend to use <code>leaflet.multiopacity</code> with Shiny, it is possible that you use the <code><a href="https://rdrr.io/pkg/leaflet/man/leafletProxy.html">leafletProxy()</a></code> function instead of only one call to <code><a href="https://rdrr.io/pkg/leaflet/man/leaflet.html">leaflet()</a></code> function. If this is your case, and you want to use the opacity controls of this package, you need to set the <code>renderOnLayerAdd</code> argument to <code>TRUE</code>.</p>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/leaflet/" class="external-link">leaflet</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/meantrix/leaflet.multiopacity" class="external-link">leaflet.multiopacity</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/raster" class="external-link">raster</a></span><span class="op">)</span></code></pre></div>
+<p>If you intend to use <code>leaflet.multiopacity</code> with Shiny, it is possible that you use the <code><a href="https://rdrr.io/pkg/leaflet/man/leafletProxy.html" class="external-link">leafletProxy()</a></code> function instead of only one call to <code><a href="https://rdrr.io/pkg/leaflet/man/leaflet.html" class="external-link">leaflet()</a></code> function. If this is your case, and you want to use the opacity controls of this package, you need to set the <code>renderOnLayerAdd</code> argument to <code>TRUE</code>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu">shiny</span><span class="fu">::</span><span class="fu">fluidPage</span><span class="op">(</span>
-  <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-shiny.html">leafletOutput</a></span><span class="op">(</span><span class="st">"map"</span><span class="op">)</span>,
+  <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-shiny.html" class="external-link">leafletOutput</a></span><span class="op">(</span><span class="st">"map"</span><span class="op">)</span>,
   <span class="fu">shiny</span><span class="fu">::</span><span class="fu">actionButton</span><span class="op">(</span><span class="st">"addLayers"</span>, <span class="st">"Add Layers"</span><span class="op">)</span>
 <span class="op">)</span>
 
 <span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span>
   
   <span class="co"># Create a map inside of your server function</span>
-  <span class="va">output</span><span class="op">$</span><span class="va">map</span> <span class="op">&lt;-</span> <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-shiny.html">renderLeaflet</a></span><span class="op">(</span><span class="op">{</span>
+  <span class="va">output</span><span class="op">$</span><span class="va">map</span> <span class="op">&lt;-</span> <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-shiny.html" class="external-link">renderLeaflet</a></span><span class="op">(</span><span class="op">{</span>
     <span class="co"># Create raster example</span>
-    <span class="va">r</span> <span class="op">&lt;-</span> <span class="fu">raster</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/raster/man/raster.html">raster</a></span><span class="op">(</span>xmn <span class="op">=</span> <span class="op">-</span><span class="fl">2.8</span>, xmx <span class="op">=</span> <span class="op">-</span><span class="fl">2.79</span>,
+    <span class="va">r</span> <span class="op">&lt;-</span> <span class="fu">raster</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/raster/man/raster.html" class="external-link">raster</a></span><span class="op">(</span>xmn <span class="op">=</span> <span class="op">-</span><span class="fl">2.8</span>, xmx <span class="op">=</span> <span class="op">-</span><span class="fl">2.79</span>,
                         ymn <span class="op">=</span> <span class="fl">54.04</span>, ymx <span class="op">=</span> <span class="fl">54.05</span>,
                         nrows <span class="op">=</span> <span class="fl">30</span>, ncols <span class="op">=</span> <span class="fl">30</span><span class="op">)</span>
-    <span class="fu">raster</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/raster/man/getValues.html">values</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">900</span>, <span class="fu"><a href="https://rdrr.io/pkg/raster/man/ncell.html">nrow</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/pkg/raster/man/ncell.html">ncol</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-    <span class="fu">raster</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/raster/man/projection.html">crs</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu">raster</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/raster/man/projection.html">crs</a></span><span class="op">(</span><span class="st">"+init=epsg:4326"</span><span class="op">)</span>
+    <span class="fu">raster</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/raster/man/getValues.html" class="external-link">values</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">900</span>, <span class="fu"><a href="https://rdrr.io/pkg/raster/man/ncell.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/pkg/raster/man/ncell.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+    <span class="fu">raster</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/raster/man/projection.html" class="external-link">crs</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu">raster</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/raster/man/projection.html" class="external-link">crs</a></span><span class="op">(</span><span class="st">"+init=epsg:4326"</span><span class="op">)</span>
     
-    <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/leaflet.html">leaflet</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-      <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-methods.html">setView</a></span><span class="op">(</span>lng <span class="op">=</span> <span class="op">-</span><span class="fl">2.79545</span>, lat <span class="op">=</span> <span class="fl">54.04321</span>, zoom <span class="op">=</span> <span class="fl">14</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-      <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/addProviderTiles.html">addProviderTiles</a></span><span class="op">(</span><span class="st">"OpenStreetMap"</span>, layerId <span class="op">=</span> <span class="st">"osm"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/leaflet.html" class="external-link">leaflet</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/leaflet/man/leaflet-imports.html" class="external-link">%&gt;%</a></span> 
+      <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-methods.html" class="external-link">setView</a></span><span class="op">(</span>lng <span class="op">=</span> <span class="op">-</span><span class="fl">2.79545</span>, lat <span class="op">=</span> <span class="fl">54.04321</span>, zoom <span class="op">=</span> <span class="fl">14</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/leaflet/man/leaflet-imports.html" class="external-link">%&gt;%</a></span> 
+      <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/addProviderTiles.html" class="external-link">addProviderTiles</a></span><span class="op">(</span><span class="st">"OpenStreetMap"</span>, layerId <span class="op">=</span> <span class="st">"osm"</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/leaflet/man/leaflet-imports.html" class="external-link">%&gt;%</a></span>
       <span class="fu">leaflet.multiopacity</span><span class="fu">::</span><span class="fu"><a href="../reference/addOpacityControls.html">addOpacityControls</a></span><span class="op">(</span>group <span class="op">=</span> <span class="st">"layersToAdd"</span>, 
                                                renderOnLayerAdd <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
     
@@ -128,14 +130,14 @@
   
   <span class="co"># Observer that trigger a map update</span>
   <span class="fu">shiny</span><span class="fu">::</span><span class="fu">observeEvent</span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">addLayers</span>, <span class="op">{</span>
-    <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/leafletProxy.html">leafletProxy</a></span><span class="op">(</span><span class="st">"map"</span>, <span class="va">session</span><span class="op">)</span> <span class="op">%&gt;%</span>
-      <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/addRasterImage.html">addRasterImage</a></span><span class="op">(</span><span class="va">r</span>, colors <span class="op">=</span> <span class="st">"viridis"</span>,
+    <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/leafletProxy.html" class="external-link">leafletProxy</a></span><span class="op">(</span><span class="st">"map"</span>, <span class="va">session</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/leaflet/man/leaflet-imports.html" class="external-link">%&gt;%</a></span>
+      <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/addRasterImage.html" class="external-link">addRasterImage</a></span><span class="op">(</span><span class="va">r</span>, colors <span class="op">=</span> <span class="st">"viridis"</span>,
                               layerId <span class="op">=</span> <span class="st">"raster1"</span>,
-                              group <span class="op">=</span> <span class="st">"layersToAdd"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-      <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/addRasterImage.html">addRasterImage</a></span><span class="op">(</span><span class="va">r</span>, colors <span class="op">=</span> <span class="st">"Spectral"</span>,
+                              group <span class="op">=</span> <span class="st">"layersToAdd"</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/leaflet/man/leaflet-imports.html" class="external-link">%&gt;%</a></span>
+      <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/addRasterImage.html" class="external-link">addRasterImage</a></span><span class="op">(</span><span class="va">r</span>, colors <span class="op">=</span> <span class="st">"Spectral"</span>,
                               layerId <span class="op">=</span> <span class="st">"raster2"</span>,
-                              group <span class="op">=</span> <span class="st">"layersToAdd"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-      <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/addAwesomeMarkers.html">addAwesomeMarkers</a></span><span class="op">(</span>lng <span class="op">=</span> <span class="op">-</span><span class="fl">2.79545</span>, lat <span class="op">=</span> <span class="fl">54.04321</span>, 
+                              group <span class="op">=</span> <span class="st">"layersToAdd"</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/leaflet/man/leaflet-imports.html" class="external-link">%&gt;%</a></span> 
+      <span class="fu">leaflet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/addAwesomeMarkers.html" class="external-link">addAwesomeMarkers</a></span><span class="op">(</span>lng <span class="op">=</span> <span class="op">-</span><span class="fl">2.79545</span>, lat <span class="op">=</span> <span class="fl">54.04321</span>, 
                                  layerId <span class="op">=</span> <span class="st">"hospital"</span>, 
                                  label <span class="op">=</span> <span class="st">"Hospital"</span>,
                                  group <span class="op">=</span> <span class="st">"layersToAdd"</span><span class="op">)</span>
@@ -144,8 +146,8 @@
 <span class="op">}</span>
 
 <span class="fu">shiny</span><span class="fu">::</span><span class="fu">shinyApp</span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></code></pre></div>
-<p>Please note that you need to use this with the first <code><a href="https://rdrr.io/pkg/leaflet/man/leaflet.html">leaflet()</a></code> call, not with <code><a href="https://rdrr.io/pkg/leaflet/man/leafletProxy.html">leafletProxy()</a></code> call. Some leaflet plugins don’t work with the current R leaflet version when called after a <code><a href="https://rdrr.io/pkg/leaflet/man/leafletProxy.html">leafletProxy()</a></code> call.</p>
-<p>What the <code>renderOnLayerAdd</code> argument does, is to associate the function of creating the opacity controls to the <code>layerAdd</code> event. This way, every time a new layer is added by a <code><a href="https://rdrr.io/pkg/leaflet/man/leafletProxy.html">leafletProxy()</a></code> call, the controls will be updated.</p>
+<p>Please note that you need to use this with the first <code><a href="https://rdrr.io/pkg/leaflet/man/leaflet.html" class="external-link">leaflet()</a></code> call, not with <code><a href="https://rdrr.io/pkg/leaflet/man/leafletProxy.html" class="external-link">leafletProxy()</a></code> call. Some leaflet plugins don’t work with the current R leaflet version when called after a <code><a href="https://rdrr.io/pkg/leaflet/man/leafletProxy.html" class="external-link">leafletProxy()</a></code> call.</p>
+<p>What the <code>renderOnLayerAdd</code> argument does, is to associate the function of creating the opacity controls to the <code>layerAdd</code> event. This way, every time a new layer is added by a <code><a href="https://rdrr.io/pkg/leaflet/man/leafletProxy.html" class="external-link">leafletProxy()</a></code> call, the controls will be updated.</p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -157,11 +159,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Vinícius Zendron, Meantrix.</p>
+  <p></p>
+<p>Developed by Vinícius Zendron, Meantrix.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link external-link">pkgdown</a> 1.6.1.9001.</p>
 </div>
 
       </footer>
@@ -169,6 +173,8 @@
 
   
 
+
+  
 
   </body>
 </html>
